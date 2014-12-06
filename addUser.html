@@ -21,8 +21,8 @@
 				<small>You can rate healthcare systems of countries in which you were hospitalized.</small>
 			</h2>  	
 			
-			<h3>VPISI SE V SVOJ (EHR) RAČUN in pridobi informacije<h3>
-			<a href="addUser.html">addUser</a> || 
+			<h3>USTVARI NOV EHR RAČUN<h3>
+			<a href="test.html">test</a> || 
 			<a href="showData.html">showData</a>
 		</div> 
 		
@@ -30,16 +30,16 @@
 			<h3>
 				<div class="col-lg-2 col-md-2 col-sm-2">
 					<span class="label label-primary">Ime:</span>
-					<input id="loginIme" type="text" class="form-control" placeholder="Ime">
+					<input id="kreirajIme" type="text" class="form-control input-mini" placeholder="Ime">
 						</br>
 					<span class="label label-primary">Priimek:</span>
-					<input id="loginPriimek" type="text" class="form-control" placeholder="Priimek">
+					<input id="kreirajPriimek" type="text" class="form-control" placeholder="Priimek">
 						</br>
 					<span class="label label-primary">Datum rojstva (yyyy-mm-ddThh:mm):</span>
-					<input id="loginDatumRojstva" type="text" class="form-control" placeholder="yyyy-mm-ddThh:mm">
+					<input id="kreirajDatumRojstva" type="text" class="form-control" placeholder="yyyy-mm-ddThh:mm">
 						</br>
-					<button type="button" class="btn btn-primary btn-md" onclick=""> <!-- funkcija za vpis --> Vpiši se</button>
-					<span id="vpis"></span>
+					<button type="button" class="btn btn-primary btn-md" onclick="kreirajEHRzaBolnika()"> Ustvarjanje novega EHR računa</button>
+					<span id="kreirajSporocilo"></span> <!--tu notr funkcija poslje sporocilo-->
 				</div>
 			</h3>
 
