@@ -15,6 +15,34 @@
 	  	</style>
 	</head>
 	<body>
-		<h1>TEST</h1>
+		<div class="page-header">
+			<h2>VPIS osebe<small>, ki hoče pogledat,</small> </h2>  
+			<ul>
+				<li> v katerih državah je potencialno pogubljena, če se ji kaj zgodi </li>
+				<li> v katerih državah so jo že oskrbeli v kakršni koli zdravstveni ustanovi </li>
+				<ul>
+					<li>vsako oskrbo lahko oceni</li>
+				</ul>
+			</ul>	
+		</div> 
+		
+		<div class="row">
+			<h3>
+				<div class="col-lg-2 col-md-2 col-sm-2">
+					<span class="label label-primary">Ime:</span>
+					<input id="kreirajIme" type="text" class="form-control input-mini" placeholder="Ime">
+						</br>
+					<span class="label label-primary">Priimek:</span>
+					<input id="kreirajPriimek" type="text" class="form-control" placeholder="Priimek">
+						</br>
+					<span class="label label-primary">Datum rojstva (yyyy-mm-ddThh:mm):</span>
+					<input id="kreirajDatumRojstva" type="text" class="form-control" placeholder="yyyy-mm-ddThh:mm">
+						</br>
+					<button type="button" class="btn btn-primary btn-md" onclick=""> <!-- funkcija za vpis --> Vpiši se</button>
+					<span id="vpis"></span>
+				</div>
+			</h3>
+
+		</div>
 	</body>
 </html>
