@@ -10,7 +10,6 @@
 		<!--<script src="demo.js"></script>-->
 	    <style>
 	  		body {padding: 10px;}
-	  		.btn {margin-top: 10px;}
 	  		.obvestilo {margin-left:10px;}
 	  	</style>
 	</head>
@@ -27,33 +26,84 @@
 			<a href="showData.html">showData</a>
 		</div> 
 		
+		
 		<div class="row">
-			<h3>
-				<div class="col-lg-2 col-md-2 col-sm-2">
-					
-					<h4>Izberi nov hiter vnos:</h4>
+			
+			<div class="col-lg-4 col-md-4 col-sm-4">
+				<small>Trenutno še nedelujoče, hvala za razumevanje.</small></br>
+				ISKANJE PO IMENU IN PRIIMKU</br>
+				Izberi nov hiter vnos:
+				<div class="input-group">
+					<span class="input-group-addon">Prednastavljeno:</span>
 					<select class="form-control" id="readReady">
 						<option value=""></option>
-						<option value="janez, novak, 1999-11-22T11:55">janez novak</option>
+						<option value="janez, novak">janez novak</option>
 					</select>
-					<hr>
-					
-					<span class="label label-primary">Ime:</span>
-					<input id="loginIme" type="text" class="form-control" placeholder="Ime">
-						</br>
-					<span class="label label-primary">Priimek:</span>
-					<input id="loginPriimek" type="text" class="form-control" placeholder="Priimek">
-						</br>
-					<span class="label label-primary">Datum rojstva (yyyy-mm-ddThh:mm):</span>
-					<input id="loginDatumRojstva" type="text" class="form-control" placeholder="yyyy-mm-ddThh:mm">
-						</br>
-					<button type="button" class="btn btn-primary btn-md" onclick=""> <!-- funkcija za vpis --> Vpiši se</button>
-					<span id="vpis"></span>
 				</div>
-			</h3>
+					<hr>
+				Ali pa ročno vpisuj podatke: 
+				
+				<div class="input-group">
+					<span class="input-group-addon">Ime:</span>
+					<input id="addName" type="text" class="form-control" placeholder="Ime">
+				</div>	
+					</br>
+				<div class="input-group">	
+					<span class="input-group-addon">Priimek:</span>
+					<input id="addSurname" type="text" class="form-control" placeholder="Priimek">
+				</div>
+					<hr>
+				<button type="button" class="btn btn-primary btn-md" onclick="searchByName()">Prijavi se</button>
+				<span id="addFormMessage"></span>
+				<div id="header"></div>
+				<div id="result"></div>
+				
+			</div>
+			
+				
+<!--				
+<div class="input-group">
+	<input id="id" type="text" class="form-control" placeholder="xy">
+	<span class="input-group-addon">text</span>
+</div>
+-->
+			<div class="col-lg-1 col-md-1 col-sm-1">
+			</div>
+				
+			<div class="col-lg-4 col-md-4 col-sm-4">
+				<small>Že deluje, uporabi to.</small></br>
+				ISKANJE PO EHR ID</br>
+				Izberi nov hiter vnos:
+				<div class="input-group">
+						<span class="input-group-addon">Prednastavljeno:</span>
+						<select class="form-control" id="preberiEhrIdZaVitalneZnake">
+							<option value=""></option>
+							<option value="b931580f-2b05-488b-985b-8d9ffb08ad02">Ata Smrk</option>
+							<option value="d564c6a3-5a43-4fcc-bfa7-9ac76e9673bd">Pujsa Pepa</option>
+						</select>
+				</div>		
+				<hr>
+				
+				Ali pa ročno vpisuj podatke:
+				<div class="input-group">
+					<span class="input-group-addon">EHR ID:</span>
+					<input id="meritveVitalnihZnakovEHRid" type="text" class="form-control" placeholder="7b661e12-3a98-21ad-c29e-2dc9f5a3d885">
+				</div>
+					<hr>
+				<button type="button" class="btn btn-primary" onclick="preberiMeritveVitalnihZnakov('telesna temperatura')">Prijavi se</button>
+				<span id="preberiMeritveVitalnihZnakovSporocilo"></span>
+				<span id="preberiSporocilo"></span>
+				<div id="krneki"></div>
+				<div id="rezultatMeritveVitalnihZnakov"></div>
+			</div>
+			
 
 		</div>
+		
+		<hr>
+		
 		<div class="row">
+			<!--
 			<div class="col-lg-6 col-md-6 col-sm-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -79,41 +129,14 @@
 				  	</div>
 				</div>
 			</div>
+			-->
 			
-			<div class="col-lg-6 col-md-6 col-sm-6">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 col-sm-6"><b>Pregled</b> meritev <b>vitalnih znakov</b> bolnika</div>
-							<div class="col-lg-3 col-md-3 col-sm-3">
-								<select class="form-control input-sm" id="preberiTipZaVitalneZnake">
-									<option value="telesna temperatura">telesna temperatura</option>
-									<option value="telesna temperatura AQL">telesna temperatura (filter na podhladitev)</option>
-									<option value="telesna teža">telesna teža</option>
-								</select>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-3">
-								<select class="form-control input-sm" id="preberiEhrIdZaVitalneZnake">
-									<option value=""></option>
-									<option value="b931580f-2b05-488b-985b-8d9ffb08ad02">Ata Smrk</option>
-									<option value="d564c6a3-5a43-4fcc-bfa7-9ac76e9673bd">Pujsa Pepa</option>
-								</select>
-							</div>
-						</div>
-					</div>				
-					<div class="panel-body">
-						<span class="label label-default">EHR ID</span>
-						<input id="meritveVitalnihZnakovEHRid" type="text" class="form-control input-mini" placeholder="7b661e12-3a98-21ad-c29e-2dc9f5a3d885">
-						<button type="button" class="btn btn-primary btn-xs" onclick="preberiMeritveVitalnihZnakov('telesna temperatura')">Preberi meritve vitalnih znakov</button>
-						<span id="preberiMeritveVitalnihZnakovSporocilo"></span>
-						<div id="rezultatMeritveVitalnihZnakov"></div>
-				  	</div>
-				</div>
-			</div>
+
 			
 			
 		</div>
 		
+
 		
 	</body>
 </html>

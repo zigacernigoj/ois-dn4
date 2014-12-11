@@ -50,7 +50,7 @@ function preberiMeritveVitalnihZnakov() {
 	
 		//var ehrId = $("#preberiEHRid").val();
 
-	if (!ehrId || ehrId.trim().length == 0) {
+	/*if (!ehrId || ehrId.trim().length == 0) {
 		$("#preberiSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevan podatek!");
 	} else {
 		$.ajax({
@@ -67,112 +67,110 @@ function preberiMeritveVitalnihZnakov() {
 				console.log(JSON.parse(err.responseText).userMessage);
 			}
 		});
-	}
+	}*/
 	
 	
 	
 	
 
-	if (!ehrId || ehrId.trim().length == 0 || !tip || tip.trim().length == 0) {
+	if (!ehrId || ehrId.trim().length == 0) {
 		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevan podatek!");
 	} else {
+		var AQL = "select "+
+					"a_a/data[at0001]/items[at0002]/value/value as Diagnosis, "+
+					"a_a/data[at0001]/items[at0009]/value/value as Description "+
+					"from EHR e "+
+					"contains COMPOSITION a "+
+					"contains EVALUATION a_a[openEHR-EHR-EVALUATION.problem_diagnosis.v1] "+
+					"offset 0 limit 100";
+				
+				
+				
+				
 		$.ajax({
-			url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
-	    	type: 'GET',
-	    	headers: {"Ehr-Session": sessionId},
-	    	success: function (data) {
-				var party = data.party;
-				$("#rezultatMeritveVitalnihZnakov").html("<br/><span>Pridobivanje podatkov za <b>'" + tip + "'</b> bolnika <b>'" + party.firstNames + " " + party.lastNames + "'</b>.</span><br/><br/>");
-				if (tip == "telesna temperatura") {
-					$.ajax({
-					    url: baseUrl + "/view/" + ehrId + "/" + "body_temperature",
-					    type: 'GET',
-					    headers: {"Ehr-Session": sessionId},
-					    success: function (res) {
-					    	if (res.length > 0) {
-						    	var results = "<table class='table table-striped table-hover'><tr><th>Datum in ura</th><th class='text-right'>Telesna temperatura</th></tr>";
-						        for (var i in res) {
-						            results += "<tr><td>" + res[i].time + "</td><td class='text-right'>" + res[i].temperature + " " 	+ res[i].unit + "</td>";
-						        }
-						        results += "</table>";
-						        $("#rezultatMeritveVitalnihZnakov").append(results);
-					    	} else {
-					    		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Ni podatkov!</span>");
-					    	}
-					    },
-					    error: function() {
-					    	$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
-							console.log(JSON.parse(err.responseText).userMessage);
-					    }
-					});
-				} else if (tip == "telesna teža") {
-					$.ajax({
-					    url: baseUrl + "/view/" + ehrId + "/" + "weight",
-					    type: 'GET',
-					    headers: {"Ehr-Session": sessionId},
-					    success: function (res) {
-					    	if (res.length > 0) {
-						    	var results = "<table class='table table-striped table-hover'><tr><th>Datum in ura</th><th class='text-right'>Telesna teža</th></tr>";
-						        for (var i in res) {
-						            results += "<tr><td>" + res[i].time + "</td><td class='text-right'>" + res[i].weight + " " 	+ res[i].unit + "</td>";
-						        }
-						        results += "</table>";
-						        $("#rezultatMeritveVitalnihZnakov").append(results);
-					    	} else {
-					    		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Ni podatkov!</span>");
-					    	}
-					    },
-					    error: function() {
-					    	$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
-							console.log(JSON.parse(err.responseText).userMessage);
-					    }
-					});					
-				} else if (tip == "telesna temperatura AQL") {
-					var AQL = 
-						"select " +
-    						"t/data[at0002]/events[at0003]/time/value as cas, " +
-    						"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude as temperatura_vrednost, " +
-    						"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/units as temperatura_enota " +
-						"from EHR e[e/ehr_id/value='" + ehrId + "'] " +
-						"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
-						"where t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude<35 " +
-						"order by t/data[at0002]/events[at0003]/time/value desc " +
-						"limit 10";
-					$.ajax({
-					    url: baseUrl + "/query?" + $.param({"aql": AQL}),
-					    type: 'GET',
-					    headers: {"Ehr-Session": sessionId},
-					    success: function (res) {
-					    	var results = "<table class='table table-striped table-hover'><tr><th>Datum in ura</th><th class='text-right'>Telesna temperatura</th></tr>";
-					    	if (res) {
-					    		var rows = res.resultSet;
-						        for (var i in rows) {
-						            results += "<tr><td>" + rows[i].cas + "</td><td class='text-right'>" + rows[i].temperatura_vrednost + " " 	+ rows[i].temperatura_enota + "</td>";
-						        }
-						        results += "</table>";
-						        $("#rezultatMeritveVitalnihZnakov").append(results);
-					    	} else {
-					    		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Ni podatkov!</span>");
-					    	}
-
-					    },
-					    error: function() {
-					    	$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
-							console.log(JSON.parse(err.responseText).userMessage);
-					    }
-					});
+			url: baseUrl + "/query?" + $.param({"aql": AQL}),
+			type: 'GET',
+			headers: {"Ehr-Session": sessionId},
+			success: function (res) {
+				var results = "<table class='table table-striped table-hover'><tr><th>Diagnosis</th><th>Description</th></tr>";
+				if (res) {
+					var rows = res.resultSet;
+					for (var i in rows) {
+						results += "<tr><td>" + rows[i].Diagnosis + "</td><td>" + rows[i].Description  + "</td></tr>";
+					}
+					results += "</table>";
+					$("#rezultatMeritveVitalnihZnakov").append(results);
+					
+					
+				} else {
+					$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Ni podatkov!</span>");
 				}
-	    	},
-	    	error: function(err) {
-	    		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
+
+			},
+			error: function() {
+				$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
 				console.log(JSON.parse(err.responseText).userMessage);
-	    	}
+			}
 		});
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 }
 
 
+function searchByName(){
+	//sessionId = getSessionId();
 
+	$.ajaxSetup({
+		headers: {
+			"Ehr-Session": sessionId,
+		}
+	});
+	
+	
+	var formName = $("#addName").val();
+	var formSurname = $("#addSurname").val();
+	
+	if (!formName || !formSurname || formName.trim().length == 0 || formSurname.trim().length == 0) {
+		$("#addFormMessage").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevan podatek!</span>");
+	} else {
+		$("#addFormMessage").html("<span class='obvestilo label label-info fade-in'>"+formname + " " + formSurname+"</span>");
+		var searchData = [
+			{key: "firstNames", value: "Mary"},
+			{key: "lastNames", value: "Wilkinson"}
+		];
+		
+	
+	
+		$.ajax({
+			url: baseUrl + "/demographics/party/query",
+			type: 'GET',
+			contentType: 'application/json',
+			data: JSON.stringify(searchData),
+			success: function (res) {
+				for (i in res.parties) {
+					var party = res.parties[i];
+					var ehrId;
+					for (j in party.partyAdditionalInfo) {
+						if (party.partyAdditionalInfo[j].key === 'ehrId') {
+							ehrId = party.partyAdditionalInfo[j].value;
+							break;
+						}
+					}
+					$("#result").append(party.firstNames + ' ' + party.lastNames +
+						' (ehrId = ' + ehrId + ')<br>');
+				}
+			}
+		});
+	}
+
+}
 
 
 
@@ -186,12 +184,11 @@ $(document).ready(function() {
 		$("#preberiSporocilo").html("");
 		$("#preberiEHRid").val($(this).val());
 	});
-	$('#preberiPredlogoBolnika').change(function() {
-		$("#kreirajSporocilo").html("");
+	$('#readReady').change(function() {
+		$("#addFormMessage").html("");
 		var podatki = $(this).val().split(",");
-		$("#kreirajIme").val(podatki[0]);
-		$("#kreirajPriimek").val(podatki[1]);
-		$("#kreirajDatumRojstva").val(podatki[2]);
+		$("#addName").val(podatki[0]);
+		$("#addSurname").val(podatki[1]);
 	});
 	$('#preberiObstojeciVitalniZnak').change(function() {
 		$("#dodajMeritveVitalnihZnakovSporocilo").html("");
