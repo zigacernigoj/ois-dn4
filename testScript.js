@@ -76,10 +76,11 @@ function preberiMeritveVitalnihZnakov() {
 	if (!ehrId || ehrId.trim().length == 0) {
 		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevan podatek!");
 	} else {
+		$("#preberiMeritveVitalnihZnakovSporocilo").html("");
 		var AQL = "select "+
 					"e/ehr_id as ehr_id, "+
-					"a_a/data[at0001]/items[at0002]/value as Problem_Diagnosis, "+
-					"a_a/data[at0001]/items[at0009]/value as Clinical_description "+
+					"a_a/data[at0001]/items[at0002]/value/value as Problem_Diagnosis, "+
+					"a_a/data[at0001]/items[at0009]/value/value as Clinical_description "+
 					"from EHR e "+
 					"contains COMPOSITION a "+
 					"contains EVALUATION a_a[openEHR-EHR-EVALUATION.problem_diagnosis.v1] "+
@@ -97,10 +98,10 @@ function preberiMeritveVitalnihZnakov() {
 				if (res) {
 					var rows = res.resultSet;
 					for (var i in rows) {
-						results += "<tr><td>" + rows[i].Problem_Diagnosis.value + "</td><td>" + rows[i].Clinical_description.value  + "</td></tr>";
+						results += "<tr><td>" + rows[i].Problem_Diagnosis+ "</td><td>" + rows[i].Clinical_description  + "</td></tr>";
 					}
 					results += "</table>";
-					$("#rezultatMeritveVitalnihZnakov").append(results);
+					$("#rezultatMeritveVitalnihZnakov").html(results);
 					
 					
 				} else {
