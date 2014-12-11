@@ -77,12 +77,13 @@ function preberiMeritveVitalnihZnakov() {
 		$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevan podatek!");
 	} else {
 		var AQL = "select "+
-					"a_a/data[at0001]/items[at0002]/value/value as Diagnosis, "+
-					"a_a/data[at0001]/items[at0009]/value/value as Description "+
+					"e/ehr_id as ehr_id, "+
+					"a_a/data[at0001]/items[at0002]/value as Problem_Diagnosis, "+
+					"a_a/data[at0001]/items[at0009]/value as Clinical_description "+
 					"from EHR e "+
 					"contains COMPOSITION a "+
 					"contains EVALUATION a_a[openEHR-EHR-EVALUATION.problem_diagnosis.v1] "+
-					"offset 0 limit 100";
+					"where ehr_id='"+ ehrId +"'";
 				
 				
 				
@@ -96,7 +97,7 @@ function preberiMeritveVitalnihZnakov() {
 				if (res) {
 					var rows = res.resultSet;
 					for (var i in rows) {
-						results += "<tr><td>" + rows[i].Diagnosis + "</td><td>" + rows[i].Description  + "</td></tr>";
+						results += "<tr><td>" + rows[i].Problem_Diagnosis.value + "</td><td>" + rows[i].Clinical_description.value  + "</td></tr>";
 					}
 					results += "</table>";
 					$("#rezultatMeritveVitalnihZnakov").append(results);
