@@ -78,13 +78,20 @@ function preberiMeritveVitalnihZnakov() {
 	} else {
 		$("#preberiMeritveVitalnihZnakovSporocilo").html("");
 		var AQL = "select "+
-					"e/ehr_id as ehr_id, "+
-					"a_a/data[at0001]/items[at0002]/value/value as Problem_Diagnosis, "+
-					"a_a/data[at0001]/items[at0009]/value/value as Clinical_description "+
-					"from EHR e "+
-					"contains COMPOSITION a "+
-					"contains EVALUATION a_a[openEHR-EHR-EVALUATION.problem_diagnosis.v1] "+
-					"where ehr_id='"+ ehrId +"'";
+			"e/ehr_id/value as ehr_id_value, "+
+			"a_a/data[at0001]/items[at0002]/value/value as Problem_Diagnosis, "+
+			"a_a/data[at0001]/items[at0009]/value/value as Clinical_description, "+
+			"a_a/data[at0001]/items[at0010]/value/value as Date_of_onset, "+
+			"a_a/data[at0001]/items[at0030]/value/value as Date_of_resolution_remission, "+
+			"a_b/items[at0024]/value/value as Impact, "+
+			"a_b/items[at0003]/value/value as Active_status, "+
+			"a_b/items[at0001]/value/value as Episodicity "+
+			"from EHR e "+
+			"contains COMPOSITION a "+
+			"contains ( "+
+				"EVALUATION a_a[openEHR-EHR-EVALUATION.problem_diagnosis.v1] and "+
+				"CLUSTER a_b[openEHR-EHR-CLUSTER.problem_status.v1]) "+
+			"where ehr_id_value='"+ ehrId +"'";
 				
 				
 				
@@ -94,18 +101,21 @@ function preberiMeritveVitalnihZnakov() {
 			type: 'GET',
 			headers: {"Ehr-Session": sessionId},
 			success: function (res) {
-				var results = "<table class='table table-striped table-hover'><tr><th>Diagnosis</th><th>Description</th></tr>";
+				var results = "<table class='table table-striped table-hover'><tr><th>Diagnosis</th><th>Description</th><th>Diagnosis date</th><th>Status</th></tr>";
 				if (res) {
 					var rows = res.resultSet;
 					for (var i in rows) {
-						results += "<tr><td>" + rows[i].Problem_Diagnosis+ "</td><td>" + rows[i].Clinical_description  + "</td></tr>";
+						if(rows[i].Clinical_description==null){
+							rows[i].Clinical_description="-";
+						}
+						results += "<tr><td>" + rows[i].Problem_Diagnosis + "</td><td>" + rows[i].Clinical_description  + "</td><td>" + rows[i].Date_of_onset  + "</td><td>" + rows[i].Active_status + "</td></tr>";
 					}
 					results += "</table>";
 					$("#rezultatMeritveVitalnihZnakov").html(results);
 					
 					
 				} else {
-					$("#preberiMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-warning fade-in'>Ni podatkov!</span>");
+					$("#rezultatMeritveVitalnihZnakov").html("Ni diagnoz! :)");
 				}
 
 			},
