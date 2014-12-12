@@ -2,3 +2,17 @@
 e666edc4-512e-4201-bd9a-1006e8fef996 janez novak 1999-11-22T11:55
 e2539860-ea8c-4b73-92dd-7fe21876134e -||-
 
+select
+    e/ehr_id/value as ehr_id_value,
+    a_a/data[at0001]/items[at0002]/value/value as Problem_Diagnosis,
+    a_a/data[at0001]/items[at0009]/value/value as Clinical_description,
+    a_a/data[at0001]/items[at0010]/value/value as Date_of_onset,
+    a_a/data[at0001]/items[at0030]/value/value as Date_of_resolution_remission,
+    a_b/items[at0024]/value/value as Impact,
+    a_b/items[at0003]/value/value as Active_status,
+    a_b/items[at0001]/value/value as Episodicity
+from EHR e
+contains COMPOSITION a
+contains (
+    EVALUATION a_a[openEHR-EHR-EVALUATION.problem_diagnosis.v1] and
+    CLUSTER a_b[openEHR-EHR-CLUSTER.problem_status.v1])
