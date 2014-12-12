@@ -90,8 +90,8 @@ function preberiMeritveVitalnihZnakov() {
 			"contains COMPOSITION a "+
 			"contains ( "+
 				"EVALUATION a_a[openEHR-EHR-EVALUATION.problem_diagnosis.v1] and "+
-				"CLUSTER a_b[openEHR-EHR-CLUSTER.problem_status.v1]) "+
-			"where ehr_id_value='"+ ehrId +"'";
+				"CLUSTER a_b[openEHR-EHR-CLUSTER.problem_status.v1]) ";//+
+			//"where ehr_id_value='"+ ehrId +"'";
 				
 				
 				
@@ -184,13 +184,6 @@ function searchByName(){
 
 }
 
-
-
-
-
-
-
-
 $(document).ready(function() {
 	$('#preberiObstojeciEHR').change(function() {
 		$("#preberiSporocilo").html("");
@@ -215,6 +208,7 @@ $(document).ready(function() {
 		$("#dodajVitalnoNasicenostKrviSKisikom").val(podatki[7]);
 		$("#dodajVitalnoMerilec").val(podatki[8]);
 	});
+	
 	$('#preberiEhrIdZaVitalneZnake').change(function() {
 		$("#preberiMeritveVitalnihZnakovSporocilo").html("");
 		$("#rezultatMeritveVitalnihZnakov").html("");
