@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	    <title>Ziga's App</title>
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	    <script src="addDiagnosisScript.js"></script>
+	    <style>
+	  		body {padding: 10px;}
+	  		.obvestilo {margin-left:10px;}
+	  	</style>
+	</head>
+	<body>
+		<div class="page-header">
+			<h2>
+				Infos about your diagnosis
+			</h2>  	
+			
+			<h3>DODAJ PODATKE O DIAGNOZI<h3>
+			<a href="addUser.html">addUser</a> || 
+			<a href="test.html">test</a> || 
+			<a href="showData.html">showData</a>
+		</div> 
+		
+		<div class="row">
+		<h3>
+			<div class="col-lg-4 col-md-4 col-sm-4">
+				<h4>Izberi nov hiter vnos:</h4>
+				<div class="input-group">
+					<span class="input-group-addon">Prednastavljeno:</span>
+					<select class="form-control" id="readReady">
+						<option value=""></option>
+						<option value="e666edc4-512e-4201-bd9a-1006e8fef996,diagnoza,opis,2014-12-12T01:01,active">janez novak</option>
+					</select>
+				</div>
+					<hr>
+				<h4>Ali pa ročno vpisuj podatke:</h4> 
+				
+				<div class="input-group">
+					<span class="input-group-addon">EHR ID:</span>
+					<input id="addEhrId" type="text" class="form-control" placeholder="e666edc4-512e-4201-bd9a-1006e8fef996">
+				</div>	
+					</br>
+				<div class="input-group">
+					<span class="input-group-addon">Diagnoza:</span>
+					<input id="addDiag" type="text" class="form-control" placeholder="Diagnoza">
+				</div>	
+					</br>
+				<div class="input-group">	
+					<span class="input-group-addon">Opis:</span>
+					<input id="addDesc" type="text" class="form-control" placeholder="Opis">
+				</div>
+					</br>
+				<div class="input-group">	
+					<span class="input-group-addon">Datum (yyyy-mm-ddThh:mm):</span>
+					<input id="addDate" type="text" class="form-control" placeholder="yyyy-mm-ddThh:mm">
+				</div>
+					</br>
+				<div class="input-group">	
+					<span class="input-group-addon">Status (active|inactive|...):</span>
+					<input id="addStat" type="text" class="form-control" placeholder="Status">
+				</div>
+					<hr>
+				<button type="button" class="btn btn-primary btn-md" onclick="addDiagnosis()">Dodaj diagnozo</button>
+				<span id="addFormMessage"></span>
+				<div id="header"></div>
+				<div id="result"></div>
+			
+			</div>
+			</h3>
+		</div>
+	</body>
+</html>

@@ -90,8 +90,8 @@ function preberiMeritveVitalnihZnakov() {
 			"contains COMPOSITION a "+
 			"contains ( "+
 				"EVALUATION a_a[openEHR-EHR-EVALUATION.problem_diagnosis.v1] and "+
-				"CLUSTER a_b[openEHR-EHR-CLUSTER.problem_status.v1]) ";//+
-			//"where ehr_id_value='"+ ehrId +"'";
+				"CLUSTER a_b[openEHR-EHR-CLUSTER.problem_status.v1]) "+
+			"where ehr_id_value='"+ ehrId +"'";
 				
 				
 				
@@ -152,7 +152,7 @@ function searchByName(){
 	if (!formName || !formSurname || formName.trim().length == 0 || formSurname.trim().length == 0) {
 		$("#addFormMessage").html("<span class='obvestilo label label-warning fade-in'>Prosim vnesite zahtevan podatek!</span>");
 	} else {
-		$("#addFormMessage").html("<span class='obvestilo label label-info fade-in'>"+formname + " " + formSurname+"</span>");
+		$("#addFormMessage").html("<span class='obvestilo label label-info fade-in'>"+formName + " " + formSurname+"</span>");
 		var searchData = [
 			{key: "firstNames", value: "Mary"},
 			{key: "lastNames", value: "Wilkinson"}

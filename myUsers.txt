@@ -16,3 +16,46 @@ contains COMPOSITION a
 contains (
     EVALUATION a_a[openEHR-EHR-EVALUATION.problem_diagnosis.v1] and
     CLUSTER a_b[openEHR-EHR-CLUSTER.problem_status.v1])
+	
+	
+	
+	
+	
+{
+	"ctx/language":"en"
+    "ctx/territory":"US"
+    "ctx/composer_name":"Silvia Blake"
+    "ctx/time":"2014-12-13T16:16:00.661+01:00" 
+	"ctx/id_namespace":"HOSPITAL-NS"    
+	"ctx/id_scheme":"HOSPITAL-NS"    
+	"ctx/participation_name":"Dr. Marcus Johnson"    
+	"ctx/participation_function":"requester"    
+	"ctx/participation_mode":"face-to-face communication"    
+	"ctx/participation_id":"199"    
+	"ctx/participation_name:1":"Lara Markham"    
+	"ctx/participation_function:1":"performer"    
+	"ctx/participation_id:1":"198"    
+	"ctx/health_care_facility|name":"Hospital"    
+	"ctx/health_care_facility|id":"9091"    
+	"medical_diagnosis/context/context_detail:0/tags:0":"Tags 61"   
+	"medical_diagnosis/problem_diagnosis:0/problem_diagnosis|code":"D.43"    
+	"medical_diagnosis/problem_diagnosis:0/problem_diagnosis|value":"D.43 description"   
+	"medical_diagnosis/problem_diagnosis:0/clinical_description":"Clinical description 64"    
+	"medical_diagnosis/problem_diagnosis:0/date_of_onset":"2014-12-13T15:16:00.661Z"  
+	"medical_diagnosis/problem_diagnosis:0/date_of_resolution_remission":"2014-12-13T15:16:00.661Z" 
+	"medical_diagnosis/problem_diagnosis:0/comment":"Comment 6"   
+	"medical_diagnosis/problem_diagnosis:0/link_to_supporting_medical_documentation":"http://example.com/path/resource"   
+	"medical_diagnosis/problem_diagnosis:0/problem_context_qualifiers:0/certainty|code":"at0048"  
+	"medical_diagnosis/problem_diagnosis:0/problem_context_qualifiers:0/impact|code":"at0039"   
+	"medical_diagnosis/problem_diagnosis:0/problem_context_qualifiers:0/category|code":"at0058"   
+	"medical_diagnosis/problem_diagnosis:0/problem_context_qualifiers:0/active_status|code":"at0028"  
+	"medical_diagnosis/problem_diagnosis:0/problem_context_qualifiers:0/active_status_comment":"Active status comment 54"  
+	"medical_diagnosis/problem_diagnosis:0/problem_context_qualifiers:0/evolution|code":"at0018"   
+	"medical_diagnosis/problem_diagnosis:0/problem_context_qualifiers:0/temporal_context|code":"at0062"    
+	"medical_diagnosis/problem_diagnosis:0/problem_context_qualifiers:0/episodicity|code":"at0035"   
+	"medical_diagnosis/problem_diagnosis:0/problem_context_qualifiers:0/episodic_care_status|code":"at0067" 
+	"medical_diagnosis/problem_diagnosis:0/problem_context_qualifiers:0/priority/value":"Priority 47"   
+	"medical_diagnosis/problem_diagnosis:0/problem_context_qualifiers:0/priority/value2":7  
+	"medical_diagnosis/problem_diagnosis:0/problem_context_qualifiers:0/summarisation/value":true    
+	"medical_diagnosis/problem_diagnosis:0/problem_context_qualifiers:0/summarisation/value2":"Summarisation 19"
+}	
