@@ -6,6 +6,7 @@
 	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 	    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<script src="showDataScript.js"></script>
 	    <style>
 	  		body {padding: 10px;}
 	  		.btn {margin-top: 10px;}
@@ -25,9 +26,11 @@
 		</div> 
 		
 		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12" id="data">
+			<div id="data">
+				
+				
 			</div>
 		</div>	
-		<button type="button" class="btn btn-primary btn-md" onclick="">button</button>
+		<button type="button" class="btn btn-primary btn-md" onclick="getData()">button</button>
 	</body>
 </html>
