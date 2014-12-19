@@ -108,7 +108,11 @@ function preberiMeritveVitalnihZnakov() {
 						if(rows[i].Clinical_description==null){
 							rows[i].Clinical_description="-";
 						}
-						results += "<tr><td>" + rows[i].Problem_Diagnosis + "</td><td>" + rows[i].Clinical_description  + "</td><td>" + rows[i].Date_of_onset  + "</td><td>" + rows[i].Active_status + "</td></tr>";
+						var date = new Date(rows[i].Date_of_onset);
+						var day=date.getDate();
+						var month = date.getMonth()+1;
+						var year = date.getFullYear();
+						results += "<tr><td>" + rows[i].Problem_Diagnosis + "</td><td>" + rows[i].Clinical_description  + "</td><td>" + day+"."+month+"."+year  + "</td><td>" + rows[i].Active_status + "</td></tr>";
 					}
 					results += "</table>";
 					$("#rezultatMeritveVitalnihZnakov").html(results);
