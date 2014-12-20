@@ -52,12 +52,16 @@ function getData(){
 	   results += "</table>";
 	  $("#data1").append(results);
 	  //$("#data1").append(JSON.stringify(data));
-	  $("#data2").append("<table class='table table-striped table-hover'><tr>");
-	   $("#data2").append("<td>"+mainCat+"</td>");
-	   $("#data2").append("<td>"+sub1Cat+"</td>");
-	   $("#data2").append("<td>"+sub2Cat+"</td>");
-	   $("#data2").append("<td>"+sub3Cat+"</td>");
-	   $("#data2").append("</tr></table>");
+	  
+	  var tabledata2="<table class='table table-striped table-hover'><tr>"
+						+"<td>"+mainCat+"</td>"
+						+"<td>"+sub1Cat+"</td>"
+						+"<td>"+sub2Cat+"</td>"
+						+"<td>"+sub3Cat+"</td>"
+						+"</tr></table>";
+
+
+		$("#data2").append(tabledata2);
 	});	
 		
 	//$("#data2").html(JSON.stringify(data));	
