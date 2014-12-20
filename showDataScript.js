@@ -34,14 +34,14 @@ function getData(){
 			k++;
 		}
 		
-		if(data[i].sub2 && data[i].sub2.trim().length>2){
+		if(data[i].sub2 && data[i].sub2.trim().length>3){
 			sub2Cat[l]=JSON.stringify(data[i].sub2);
 			//$("#data2").append(data[i].code +": "+ data[i].sub2+ " ; l=" + k + "</br>");
 			l++;
 		}
 		
-		if(data[i].sub3 && data[i].sub3.trim().length>2){
-			sub3Cat[l]=JSON.stringify(data[i].sub3);
+		if(data[i].sub3 && data[i].sub3.trim().length>3){
+			sub3Cat[m]=JSON.stringify(data[i].sub3);
 			//$("#data2").append(data[i].code +": "+ data[i].sub3+ " ; m=" + k + "</br>");
 			m++;
 		}
