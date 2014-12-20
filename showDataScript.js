@@ -103,7 +103,7 @@ function toggle(){
 	}
 	else{
 		document.getElementById("data1").style.visibility = 'hidden';
-		document.getElementById("data1").style.visibility = 'hidden';		
+		document.getElementById("data2").style.visibility = 'hidden';		
 	}
 
 }
