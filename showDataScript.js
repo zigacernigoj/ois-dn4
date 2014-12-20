@@ -21,7 +21,7 @@ function getData(){
 	  var results = "<table class='table table-striped table-hover'><tr><th>code</th><th>main</th><th>sub1</th><th>sub2</th><th>sub3</th><th>deaths (2012)</th></tr>";
 	  var tabledata2="<table class='table table-striped table-hover'>";
 	
-	  var select="<option value=""></option>";
+	  var select="<option value=''></option>";
 	  
 	  
 	  
