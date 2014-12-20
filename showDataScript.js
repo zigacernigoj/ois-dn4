@@ -22,9 +22,11 @@ function getData(){
 	  var j = 0;
 	  for (var i in data){
 		results += "<tr><td>" + data[i].code + "</td><td>" + data[i].main +"</td><td>" + data[i].sub1 + "</td><td>" + data[i].sub2 +"</td><td>" + data[i].sub3 +"</td><td>" +  data[i].Deaths2012 +"</td></tr>";
-		mainCat[j]=JSON.stringify(data[i].main);
-		$("#data2").append(mainCat[j]);
-		
+		if(data[i].main!=undefined){
+			mainCat[j]=JSON.stringify(data[i].main);
+			$("#data2").append(mainCat[j]);
+			j++;
+		}
 		
 	  }
 	   results += "</table>";
