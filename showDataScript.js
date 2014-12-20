@@ -95,7 +95,7 @@ function getData(){
 }
 
 
-function Tables(){
+function toggle(){
 document.getElementById("data1").style.visibility = 'visible';
 document.getElementById("data2").style.visibility = 'visible';
 
