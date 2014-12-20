@@ -86,8 +86,18 @@ function getData(){
 		$("#chooseS2").append(selectS2);
 		$("#chooseS3").append(selectS3);
 	});	
-		
+	
+	document.getElementById("data1").style.visibility = 'hidden';
+	document.getElementById("data2").style.visibility = 'hidden';
+	
 	//$("#data2").html(JSON.stringify(data));	
+
+}
+
+
+function Tables(){
+document.getElementById("data1").style.visibility = 'visible';
+document.getElementById("data2").style.visibility = 'visible';
 
 }
 
