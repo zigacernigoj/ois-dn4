@@ -20,7 +20,12 @@ function getData(){
 	  //alert("deluje!");
 	  var results = "<table class='table table-striped table-hover'><tr><th>code</th><th>main</th><th>sub1</th><th>sub2</th><th>sub3</th><th>deaths (2012)</th></tr>";
 	  var tabledata2="<table class='table table-striped table-hover'>";
-
+	
+	  var select="<option value=""></option>";
+	  
+	  
+	  
+	  
 	  var j=0, k=0, l=0, m=0;
 	  for (var i in data){
 		results += "<tr><td>" + data[i].code + "</td><td>" + data[i].main +"</td><td>" + data[i].sub1 + "</td><td>" + data[i].sub2 +"</td><td>" + data[i].sub3 +"</td><td>" +  data[i].Deaths2012 +"</td></tr>";
@@ -30,6 +35,9 @@ function getData(){
 			mainCat[j]= j + " " + data[i].main;
 			//$("#data2").append(data[i].code +": "+ data[i].main+ " ; j=" + j + "</br>");
 			tabledata2+="<td>"+mainCat[j]+"</td>";
+			select+="<option value='"+mainCat[j]+"'>"+mainCat[j]+"</option>";
+			
+			
 			k=0;
 		}
 		
@@ -67,6 +75,7 @@ function getData(){
 	  //$("#data1").append(JSON.stringify(data));
 	  
 		$("#data2").append(tabledata2);
+		$("#choose").append(select);
 	});	
 		
 	//$("#data2").html(JSON.stringify(data));	
