@@ -14,7 +14,7 @@ $.ajax({
 		
 		
 	$.getJSON("testna1.json", function(data){
-	  alert("deluje!");
+	  //alert("deluje!");
 	  $("#data1").html(JSON.stringify(data));
 	});	
 		
