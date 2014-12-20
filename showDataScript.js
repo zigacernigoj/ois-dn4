@@ -15,9 +15,9 @@ $.ajax({
 		
 	$.getJSON("testna1.json", function(data){
 	  alert("deluje!");
-	  $("#data").html(data);
+	  $("#data1").html(data);
 	});	
 		
-	//$("#data").html(data);	
+	$("#data2").html(data);	
 
 }
