@@ -1,6 +1,3 @@
-{
- "name": "flare",
- "children": [
   {
    "name": "analytics",
    "children": [
@@ -13,4 +10,3 @@
       {"name": "MergeEdge", "size": 4}
      ]}
    ]}
- ]}
