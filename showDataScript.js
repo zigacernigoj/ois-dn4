@@ -22,7 +22,7 @@ function getData(){
 	  var j = 0;
 	  for (var i in data){
 		results += "<tr><td>" + data[i].code + "</td><td>" + data[i].main +"</td><td>" + data[i].sub1 + "</td><td>" + data[i].sub2 +"</td><td>" + data[i].sub3 +"</td><td>" +  data[i].Deaths2012 +"</td></tr>";
-		if(data[i].main.trim().length>2 && data[i].code>0){
+		if(String(data[i].main.trim()).length>2 && data[i].code>0){
 			mainCat[j]=data[i].main.trim();
 			j++;
 		}
