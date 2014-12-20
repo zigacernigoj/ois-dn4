@@ -13,7 +13,7 @@ function getData(){
 		}
 	});
 */
-	var mainCat=new Array(), sub1Cat=new Array(), sub2Cat=new Array(), sub3Cat=new Array();
+	var mainCat=new Array(), sub1Cat=new Array(Array()), sub2Cat=new Array(Array()), sub3Cat=new Array(Array());
 	
 		
 	$.getJSON("testna1.json", function(data){
@@ -43,25 +43,28 @@ function getData(){
 		
 		if(data[i].code>0 && data[i].sub1 && data[i].sub1.trim().length>3){
 			k++;
-			sub1Cat[k]= j + "." + k + " " + data[i].sub1;
+			sub1Cat[k][0]=j;
+			sub1Cat[k][1]= j + "." + k + " " + data[i].sub1;
 			//$("#data2").append(data[i].code +": "+ data[i].sub1+ " ; k=" + k + "</br>");
-			tabledata2+="<td>"+sub1Cat[k]+"</td>";
+			tabledata2+="<td>"+sub1Cat[k][1]+"</td>";
 			l=0;
 		}
 		
 		if(data[i].code>0 && data[i].sub2 && data[i].sub2.trim().length>3){
 			l++;
-			sub2Cat[l]= j + "." + k + "." + l + data[i].sub2;
+			sub2Cat[l][0]=k;
+			sub2Cat[l][1]= j + "." + k + "." + l + data[i].sub2;
 			//$("#data2").append(data[i].code +": "+ data[i].sub2+ " ; l=" + k + "</br>");
-			tabledata2+="<td>"+sub2Cat[l]+"</td>";
+			tabledata2+="<td>"+sub2Cat[l][1]+"</td>";
 			m=0;
 		}
 		
 		if(data[i].code>0 && data[i].sub3 && data[i].sub3.trim().length>3){
 			m++;
-			sub3Cat[m]= j + "." + k + "." + l + "." + m + data[i].sub3;
+			sub3Cat[m][0]=l;
+			sub3Cat[m][1]= j + "." + k + "." + l + "." + m + data[i].sub3;
 			//$("#data2").append(data[i].code +": "+ data[i].sub3+ " ; m=" + k + "</br>");
-			tabledata2+="<td>"+sub3Cat[m]+"</td>";
+			tabledata2+="<td>"+sub3Cat[m][1]+"</td>";
 		}
 		
 		tabledata2+="</tr>";
