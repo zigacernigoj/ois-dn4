@@ -26,31 +26,35 @@ function getData(){
 		results += "<tr><td>" + data[i].code + "</td><td>" + data[i].main +"</td><td>" + data[i].sub1 + "</td><td>" + data[i].sub2 +"</td><td>" + data[i].sub3 +"</td><td>" +  data[i].Deaths2012 +"</td></tr>";
 		tabledata2+="<tr>";
 		if(data[i].code>0 && data[i].main && data[i].main.trim().length>3){
+			j++;
 			mainCat[j]= j + " " + data[i].main;
 			//$("#data2").append(data[i].code +": "+ data[i].main+ " ; j=" + j + "</br>");
 			tabledata2+="<td>"+mainCat[j]+"</td>";
-			j++;
+			
 		}
 		
 		if(data[i].code>0 && data[i].sub1 && data[i].sub1.trim().length>3){
+			k++;
 			sub1Cat[k]= j + "." + k + " " + data[i].sub1;
 			//$("#data2").append(data[i].code +": "+ data[i].sub1+ " ; k=" + k + "</br>");
 			tabledata2+="<td>"+sub1Cat[k]+"</td>";
-			k++;
+			
 		}
 		
 		if(data[i].code>0 && data[i].sub2 && data[i].sub2.trim().length>3){
+			l++;
 			sub2Cat[l]= j + "." + k + "." + l + data[i].sub2;
 			//$("#data2").append(data[i].code +": "+ data[i].sub2+ " ; l=" + k + "</br>");
 			tabledata2+="<td>"+sub2Cat[l]+"</td>";
-			l++;
+			
 		}
 		
 		if(data[i].code>0 && data[i].sub3 && data[i].sub3.trim().length>3){
+			m++;
 			sub3Cat[m]= j + "." + k + "." + l + "." + m + data[i].sub3;
 			//$("#data2").append(data[i].code +": "+ data[i].sub3+ " ; m=" + k + "</br>");
 			tabledata2+="<td>"+sub3Cat[m]+"</td>";
-			m++;
+			
 		}
 		
 		tabledata2+="</tr>";
