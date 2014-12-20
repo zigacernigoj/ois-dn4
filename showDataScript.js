@@ -1,4 +1,4 @@
-var mainCat=new Array(), sub1Cat=new Array(Array()), sub2Cat=new Array(Array()), sub3Cat=new Array(Array());
+var mainCat=new Array(), sub1Cat=new Array(Array(), Array()), sub2Cat=new Array(Array(), Array()), sub3Cat=new Array(Array(), Array());
 
 
 
@@ -43,28 +43,28 @@ function getData(){
 		
 		if(data[i].code>0 && data[i].sub1 && data[i].sub1.trim().length>3){
 			k++;
-			sub1Cat[k][0]=j;
+			sub1Cat[k][0]=mainCat[j];
 			sub1Cat[k][1]= j + "." + k + " " + data[i].sub1;
 			//$("#data2").append(data[i].code +": "+ data[i].sub1+ " ; k=" + k + "</br>");
-			tabledata2+="<td>"+sub1Cat[k][1]+"</td>";
+			tabledata2+="<td>"+sub1Cat[k]+"</td>";
 			l=0;
 		}
 		
 		if(data[i].code>0 && data[i].sub2 && data[i].sub2.trim().length>3){
 			l++;
-			sub2Cat[l][0]=k;
+			sub2Cat[l][0]=sub1Cat[k][1];
 			sub2Cat[l][1]= j + "." + k + "." + l + data[i].sub2;
 			//$("#data2").append(data[i].code +": "+ data[i].sub2+ " ; l=" + k + "</br>");
-			tabledata2+="<td>"+sub2Cat[l][1]+"</td>";
+			tabledata2+="<td>"+sub2Cat[l]+"</td>";
 			m=0;
 		}
 		
 		if(data[i].code>0 && data[i].sub3 && data[i].sub3.trim().length>3){
 			m++;
-			sub3Cat[m][0]=l;
+			sub3Cat[m][0]=sub2Cat[l][1];
 			sub3Cat[m][1]= j + "." + k + "." + l + "." + m + data[i].sub3;
 			//$("#data2").append(data[i].code +": "+ data[i].sub3+ " ; m=" + k + "</br>");
-			tabledata2+="<td>"+sub3Cat[m][1]+"</td>";
+			tabledata2+="<td>"+sub3Cat[m]+"</td>";
 		}
 		
 		tabledata2+="</tr>";
