@@ -24,6 +24,6 @@ $.ajax({
 	  $("#data1").append(JSON.stringify(data));
 	});	
 		
-	$("#data2").html(JSON.stringify(data));	
+	//$("#data2").html(JSON.stringify(data));	
 
 }
