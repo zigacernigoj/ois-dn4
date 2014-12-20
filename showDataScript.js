@@ -100,13 +100,6 @@ function toggle(){
 	}
 }
 
-function defaultHidden(){
-	if(document.getElementById("data1").style.visibility == 'visible'){
-		document.getElementById("data1").style.visibility = 'hidden';
-		document.getElementById("data2").style.visibility = 'hidden';
-	}
-}
-
 
 function selectData(){
 	var select="<option value=''></option>";
