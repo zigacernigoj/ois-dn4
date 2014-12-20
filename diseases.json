@@ -1,8 +1,11 @@
-{"name": "Causes in 2012",
+{
+"name": "Causes in 2012",
  "children": [
-	{"name": "Communicable, maternal, perinatal and nutritional conditions",
+	{
+	"name": "Communicable, maternal, perinatal and nutritional conditions",
 	 "children": [
-		{"name": "Infectious and parasitic diseases",
+		{
+		"name": "Infectious and parasitic diseases",
 		 "children": [
 			{"name": "Tuberculosis", "size": 1},
 			{"name": "STDs excluding HIV", "size": 2},
