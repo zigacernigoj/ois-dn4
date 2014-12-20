@@ -1,12 +1,17 @@
   {
-   "name": "analytics",
+   "name": "root",
    "children": [
     {
-     "name": "cluster",
+     "name": "child1",
      "children": [
-      {"name": "AgglomerativeCluster", "size": 1},
-      {"name": "CommunityStructure", "size": 2},
-      {"name": "HierarchicalCluster", "size": 3},
-      {"name": "MergeEdge", "size": 4}
+      {"name": "child11", "size": 1},
+      {"name": "child12", "size": 2}
+     ]}
+	 {
+     "name": "child2",
+     "children": [
+      {"name": "child21", "size": 1},
+      {"name": "child22", "size": 2},
+      {"name": "child23", "size": 3}
      ]}
    ]}
