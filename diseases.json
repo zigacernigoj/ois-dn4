@@ -6,7 +6,7 @@
      "children": [
       {"name": "child11", "size": 1},
       {"name": "child12", "size": 2}
-     ]}
+     ]},
 	 {
      "name": "child2",
      "children": [
