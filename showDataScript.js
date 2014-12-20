@@ -101,10 +101,10 @@ function toggle(){
 }
 
 function defaultHidden(){
-	document.getElementById("data1").style.visibility = 'none';
-	document.getElementById("data1").style.visibility = 'none';
-	document.getElementById("data1").style.visibility = 'hidden';
-	document.getElementById("data2").style.visibility = 'hidden';
+	if(document.getElementById("data1").style.visibility == 'visible'){
+		document.getElementById("data1").style.visibility = 'hidden';
+		document.getElementById("data2").style.visibility = 'hidden';
+	}
 }
 
 
