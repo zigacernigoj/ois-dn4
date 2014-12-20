@@ -16,7 +16,8 @@ function getData(){
 		}
 	});
 */
-
+	document.getElementById("data1").style.visibility = 'hidden';
+	document.getElementById("data2").style.visibility = 'hidden';
 	
 		
 	$.getJSON("testna1.json", function(data){
@@ -96,8 +97,14 @@ function getData(){
 
 
 function toggle(){
-document.getElementById("data1").style.visibility = 'visible';
-document.getElementById("data2").style.visibility = 'visible';
+	if(document.getElementById("data1").style.visibility == 'hidden'){
+		document.getElementById("data1").style.visibility = 'visible';
+		document.getElementById("data2").style.visibility = 'visible';
+	}
+	else{
+		document.getElementById("data1").style.visibility = 'hidden';
+		document.getElementById("data1").style.visibility = 'hidden';		
+	}
 
 }
 
