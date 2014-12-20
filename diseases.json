@@ -1,16 +1,35 @@
 {
-"name": "CausesIn2012",
+ "name": "flare",
  "children": [
-	{
-	"name": "CommunicableMaternalPerinatalNutritionalConditions",
-	 "children": [
-		{
-		"name": "InfectiousParasiticDiseases",
-		 "children": [
-			{"name": "Tuberculosis", "size": 1},
-			{"name": "STDsExcludingHIV", "size": 2},
-			{"name": "HIVAIDS", "size": 3},
-			{"name": "DiarrhoealDiseases", "size": 4}
-		]},
-	]},
-]}
+  {
+   "name": "analytics",
+   "children": [
+    {
+     "name": "cluster",
+     "children": [
+      {"name": "AgglomerativeCluster", "size": 1},
+      {"name": "CommunityStructure", "size": 2},
+      {"name": "HierarchicalCluster", "size": 3},
+      {"name": "MergeEdge", "size": 4}
+     ]
+    },
+    {
+     "name": "graph",
+     "children": [
+      {"name": "BetweennessCentrality", "size": 10},
+      {"name": "LinkDistance", "size": 20},
+      {"name": "MaxFlowMinCut", "size": 30},
+      {"name": "ShortestPaths", "size": 40},
+      {"name": "SpanningTree", "size": 50}
+     ]
+    },
+    {
+     "name": "optimization",
+     "children": [
+      {"name": "AspectRatioBanker", "size": 7074}
+     ]
+    }
+   ]
+  }
+ ]
+}
