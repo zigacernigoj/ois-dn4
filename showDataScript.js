@@ -23,25 +23,25 @@ function getData(){
 	  for (var i in data){
 		results += "<tr><td>" + data[i].code + "</td><td>" + data[i].main +"</td><td>" + data[i].sub1 + "</td><td>" + data[i].sub2 +"</td><td>" + data[i].sub3 +"</td><td>" +  data[i].Deaths2012 +"</td></tr>";
 		if(data[i].code>0 && data[i].main && data[i].main.trim().length>3){
-			mainCat[j]=data[i].main;
+			mainCat[j]= j + " " + data[i].main;
 			//$("#data2").append(data[i].code +": "+ data[i].main+ " ; j=" + j + "</br>");
 			j++;
 		}
 		
 		if(data[i].code>0 && data[i].sub1 && data[i].sub1.trim().length>3){
-			sub1Cat[k]=data[i].sub1;
+			sub1Cat[k]= j + "." + k + " " + data[i].sub1;
 			//$("#data2").append(data[i].code +": "+ data[i].sub1+ " ; k=" + k + "</br>");
 			k++;
 		}
 		
 		if(data[i].code>0 && data[i].sub2 && data[i].sub2.trim().length>3){
-			sub2Cat[l]=data[i].sub2;
+			sub2Cat[l]= j + "." + k + "." + l + data[i].sub2;
 			//$("#data2").append(data[i].code +": "+ data[i].sub2+ " ; l=" + k + "</br>");
 			l++;
 		}
 		
 		if(data[i].code>0 && data[i].sub3 && data[i].sub3.trim().length>3){
-			sub3Cat[m]=data[i].sub3;
+			sub3Cat[m]= j + "." + k + "." + l + "." + m + data[i].sub3;
 			//$("#data2").append(data[i].code +": "+ data[i].sub3+ " ; m=" + k + "</br>");
 			m++;
 		}
