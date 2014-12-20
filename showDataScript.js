@@ -22,13 +22,13 @@ function getData(){
 	  var j=0, k=0, l=0, m=0;
 	  for (var i in data){
 		results += "<tr><td>" + data[i].code + "</td><td>" + data[i].main +"</td><td>" + data[i].sub1 + "</td><td>" + data[i].sub2 +"</td><td>" + data[i].sub3 +"</td><td>" +  data[i].Deaths2012 +"</td></tr>";
-		if(data[i].main && data[i].main.trim().length>2){
+		if(data[i].main && data[i].main.trim().length>3){
 			mainCat[j]=JSON.stringify(data[i].main);
 			//$("#data2").append(data[i].code +": "+ data[i].main+ " ; j=" + j + "</br>");
 			j++;
 		}
 		
-		if(data[i].sub1 && data[i].sub1.trim().length>2){
+		if(data[i].sub1 && data[i].sub1.trim().length>3){
 			sub1Cat[k]=JSON.stringify(data[i].sub1);
 			//$("#data2").append(data[i].code +": "+ data[i].sub1+ " ; k=" + k + "</br>");
 			k++;
