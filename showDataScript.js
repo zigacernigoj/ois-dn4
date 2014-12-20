@@ -1,7 +1,5 @@
 var mainCat=new Array(), sub1Cat=new Array(), sub2Cat=new Array(), sub3Cat=new Array();
 
-
-
 function getData(){
 /*
 	$.ajax({
@@ -15,11 +13,7 @@ function getData(){
 			console.log(JSON.parse(err.responseText).userMessage);
 		}
 	});
-*/
-	document.getElementById("data1").style.visibility = 'hidden';
-	document.getElementById("data2").style.visibility = 'hidden';
-	
-		
+*/	
 	$.getJSON("testna1.json", function(data){
 	  //alert("deluje!");
 	  var results = "<table class='table table-striped table-hover'><tr><th>code</th><th>main</th><th>sub1</th><th>sub2</th><th>sub3</th><th>deaths (2012)</th></tr>";
@@ -74,7 +68,6 @@ function getData(){
 		tabledata2+="</tr>";
 	  }
 	  
-	  
 	   results += "</table>";
 	   tabledata2 += "</table>";
 	   
@@ -105,7 +98,11 @@ function toggle(){
 		document.getElementById("data1").style.visibility = 'hidden';
 		document.getElementById("data2").style.visibility = 'hidden';		
 	}
+}
 
+function defaultHidden(){
+	document.getElementById("data1").style.visibility = 'hidden';
+	document.getElementById("data2").style.visibility = 'hidden';
 }
 
 
