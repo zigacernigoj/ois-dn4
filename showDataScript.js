@@ -67,7 +67,7 @@ function getData(){
 			sub3Cat[m]= j + "." + k + "." + l + "." + m + " " + data[i].sub3;
 			//$("#data2").append(data[i].code +": "+ data[i].sub3+ " ; m=" + k + "</br>");
 			tabledata2+="<td>"+sub3Cat[m]+"</td>";
-			selectS3+="<option value='"+sub3Cat[m]+"'>"+sub3Cat[l]+"</option>";
+			selectS3+="<option value='"+sub3Cat[m]+"'>"+sub3Cat[m]+"</option>";
 		}
 		
 		tabledata2+="</tr>";
