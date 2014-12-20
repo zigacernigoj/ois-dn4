@@ -22,11 +22,7 @@ function getData(){
 	  var j = 0;
 	  for (var i in data){
 		results += "<tr><td>" + data[i].code + "</td><td>" + data[i].main +"</td><td>" + data[i].sub1 + "</td><td>" + data[i].sub2 +"</td><td>" + data[i].sub3 +"</td><td>" +  data[i].Deaths2012 +"</td></tr>";
-		if(String(data[i].main).trim().length>2 && data[i].code>0){
-			mainCat[j]=String(data[i].main).trim();
-			j++;
-		}
-		
+		mainCat[j]=JSON.stringify(data[i].main);
 		
 		
 		
@@ -34,7 +30,7 @@ function getData(){
 	   results += "</table>";
 	  $("#data1").append(results);
 	  $("#data1").append(JSON.stringify(data));
-	   $("#data2").append(mainCat);
+	   $("#data2").append(mainCat[j]);
 	});	
 		
 	//$("#data2").html(JSON.stringify(data));	
