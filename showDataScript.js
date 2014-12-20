@@ -19,6 +19,8 @@ function getData(){
 	  var results = "<table class='table table-striped table-hover'><tr><th>code</th><th>main</th><th>sub1</th><th>sub2</th><th>sub3</th><th>deaths (2012)</th></tr>";
 	  var tabledata2="<table class='table table-striped table-hover'>";
 	
+	  var forGraph='{"name":"Causes in 2012';
+	
 	  var selectMain="<option value=''></option>";
 	  var selectS1="<option value=''></option>";
 	  var selectS2="<option value=''></option>";
