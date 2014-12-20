@@ -1,5 +1,8 @@
-function getData(){
+var mainCat=new Array(), sub1Cat=new Array(Array()), sub2Cat=new Array(Array()), sub3Cat=new Array(Array());
 
+
+
+function getData(){
 /*
 	$.ajax({
 		url: 'testna1.json',
@@ -13,7 +16,7 @@ function getData(){
 		}
 	});
 */
-	var mainCat=new Array(), sub1Cat=new Array(Array()), sub2Cat=new Array(Array()), sub3Cat=new Array(Array());
+
 	
 		
 	$.getJSON("testna1.json", function(data){
@@ -22,10 +25,7 @@ function getData(){
 	  var tabledata2="<table class='table table-striped table-hover'>";
 	
 	  var select="<option value=''></option>";
-	  
-	  
-	  
-	  
+
 	  var j=0, k=0, l=0, m=0;
 	  for (var i in data){
 		results += "<tr><td>" + data[i].code + "</td><td>" + data[i].main +"</td><td>" + data[i].sub1 + "</td><td>" + data[i].sub2 +"</td><td>" + data[i].sub3 +"</td><td>" +  data[i].Deaths2012 +"</td></tr>";
@@ -78,9 +78,43 @@ function getData(){
 	  //$("#data1").append(JSON.stringify(data));
 	  
 		$("#data2").append(tabledata2);
-		$("#choose").append(select);
+		$("#chooseMain").append(select);
 	});	
 		
 	//$("#data2").html(JSON.stringify(data));	
 
 }
+
+
+function selectData(){
+	var select="<option value=''></option>";
+
+	for (var i in mainCat){
+		select+="<option value='"+mainCat[j]+"'>"+mainCat[j]+"</option>";
+	}
+
+	$("#chooseMain").append(select);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
