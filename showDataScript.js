@@ -15,7 +15,13 @@ $.ajax({
 		
 	$.getJSON("testna1.json", function(data){
 	  //alert("deluje!");
-	  $("#data1").html(JSON.stringify(data));
+	  var results = "<table class='table table-striped table-hover'><tr><th>T1</th><th class='text-right'>T2</th></tr>";
+	  for (var i in data){
+		results += "<tr><td>" + data[i].code + "</td><td class='text-right'>" + data[i].Deaths2012 +"</td></tr>";
+	  }
+	   results += "</table>";
+	  $("#data1").append(results);
+	  $("#data1").append(JSON.stringify(data));
 	});	
 		
 	$("#data2").html(JSON.stringify(data));	
