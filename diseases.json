@@ -1,16 +1,16 @@
 {
-"name": "Causes_In_2012",
+"name": "CausesIn2012",
  "children": [
 	{
-	"name": "Communicable,maternal,perinatal,nutritional_conditions",
+	"name": "CommunicableMaternalPerinatalNutritionalConditions",
 	 "children": [
 		{
-		"name": "Infectious_and_parasitic_diseases",
+		"name": "InfectiousParasiticDiseases",
 		 "children": [
 			{"name": "Tuberculosis", "size": 1},
-			{"name": "STDs_excluding_HIV", "size": 2},
-			{"name": "HIV/AIDS", "size": 3},
-			{"name": "Diarrhoeal_diseases", "size": 4}
+			{"name": "STDsExcludingHIV", "size": 2},
+			{"name": "HIVAIDS", "size": 3},
+			{"name": "DiarrhoealDiseases", "size": 4}
 		]},
 	]},
 ]}
