@@ -29,19 +29,19 @@ function getData(){
 		}
 		
 		if(data[i].code>0 && data[i].sub1 && data[i].sub1.trim().length>3){
-			sub1Cat[k]=JSON.stringify(data[i].sub1);
+			sub1Cat[k]=data[i].sub1;
 			//$("#data2").append(data[i].code +": "+ data[i].sub1+ " ; k=" + k + "</br>");
 			k++;
 		}
 		
 		if(data[i].code>0 && data[i].sub2 && data[i].sub2.trim().length>3){
-			sub2Cat[l]=JSON.stringify(data[i].sub2);
+			sub2Cat[l]=data[i].sub2;
 			//$("#data2").append(data[i].code +": "+ data[i].sub2+ " ; l=" + k + "</br>");
 			l++;
 		}
 		
 		if(data[i].code>0 && data[i].sub3 && data[i].sub3.trim().length>3){
-			sub3Cat[m]=JSON.stringify(data[i].sub3);
+			sub3Cat[m]=data[i].sub3;
 			//$("#data2").append(data[i].code +": "+ data[i].sub3+ " ; m=" + k + "</br>");
 			m++;
 		}
