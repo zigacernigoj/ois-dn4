@@ -52,7 +52,7 @@ function getData(){
 	   results += "</table>";
 	  $("#data1").append(results);
 	  //$("#data1").append(JSON.stringify(data));
-	  $("#data2").append("<table><tr>");
+	  $("#data2").append("<table border='px'><tr>");
 	   $("#data2").append("<td>"+mainCat+"</td>");
 	   $("#data2").append("<td>"+sub1Cat+"</td>");
 	   $("#data2").append("<td>"+sub2Cat+"</td>");
