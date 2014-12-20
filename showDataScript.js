@@ -18,6 +18,6 @@ $.ajax({
 	  //$("#data").html(JSON.stringify(data));
 	});	
 		
-	$("#data").html(JSON.stringify(data));	
+	$("#data").html(data);	
 
 }
