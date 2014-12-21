@@ -130,10 +130,11 @@ function selectData(){
 					if(sub1Cat[j].substring(0,3)==sub2Cat[k].substring(0,3)){
 						jsonString+='{"name":"'+sub2Cat[k]+'",';
 						jsonString+='"children":[';
-						//jsonString+='"size":1},';
+						var childs=false;
 						for (var l in sub3Cat){
 						//$("#krneki").append(mainCat[i]+" "+sub1Cat[j]+"</br>");
 							if(sub2Cat[k].substring(0,6)==sub3Cat[l].substring(0,6)){
+								childs=true;
 								jsonString+='{"name":"'+sub3Cat[l]+'",';
 								//jsonString+='"children":[';
 								jsonString+='"size":1},';
@@ -145,8 +146,10 @@ function selectData(){
 						}
 						jsonString+=']},';
 						
-						
-						
+						if(!childs){
+							jsonString=jsonString.substring(0,jsonString.length-15);
+							jsonString+='"size":1},';
+						}
 						
 					}
 				}
