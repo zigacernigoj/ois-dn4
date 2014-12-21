@@ -64,7 +64,7 @@ function addNewUserEHR() {
 
 
 $(document).ready(function() {
-	$('#readReady').change(function() {
+	$('#UserReady').change(function() {
 		$("#addFormMessage").html("");
 		var podatki = $(this).val().split(",");
 		$("#addName").val(podatki[0]);

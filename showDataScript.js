@@ -86,8 +86,8 @@ function getData(){
 		$("#chooseS3").append(selectS3);
 	});	
 	
-	document.getElementById("data1").style.visibility = 'hidden';
-	document.getElementById("data2").style.visibility = 'hidden';
+	document.getElementById("data1").style.display = 'none';
+	document.getElementById("data2").style.display = 'none';
 	
 	//$("#data2").html(JSON.stringify(data));	
 	 
@@ -96,13 +96,13 @@ function getData(){
 
 
 function toggle(){
-	if(document.getElementById("data1").style.visibility == 'hidden'){
-		document.getElementById("data1").style.visibility = 'visible';
-		document.getElementById("data2").style.visibility = 'visible';
+	if(document.getElementById("data1").style.display == 'none'){
+		document.getElementById("data1").style.display = 'block';
+		document.getElementById("data2").style.display = 'block';
 	}
-	else{
-		document.getElementById("data1").style.visibility = 'hidden';
-		document.getElementById("data2").style.visibility = 'hidden';		
+	else if(document.getElementById("data1").style.display == 'block'){
+		document.getElementById("data1").style.display = 'none';
+		document.getElementById("data2").style.display = 'none';		
 	}
 }
 
@@ -179,5 +179,9 @@ function selectData(){
 	jsonString= jsonString.substring(0, jsonString.length-1);
 	jsonString+=']}';
 	//$("#chooseMain").append(select);
-	$("#krneki").append(jsonString);
+	//$("#krneki").append(jsonString);
+	
+	
+	
+	
 }
