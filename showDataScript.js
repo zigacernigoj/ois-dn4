@@ -30,7 +30,9 @@ function getData(){
 	  var k1=0, l1=0, m1=0;
 	  
 	  for (var i in data){
-		results += "<tr><td>" + data[i].code + "</td><td>" + data[i].main +"</td><td>" + data[i].sub1 + "</td><td>" + data[i].sub2 +"</td><td>" + data[i].sub3 +"</td><td>" +  data[i].Deaths2012 +"</td></tr>";
+		if(data[i].code>0){
+			results += "<tr><td>" + data[i].code + "</td><td>" + data[i].main +"</td><td>" + data[i].sub1 + "</td><td>" + data[i].sub2 +"</td><td>" + data[i].sub3 +"</td><td>" +  data[i].Deaths2012 +"</td></tr>";
+		}
 		tabledata2+="<tr>";
 		if(data[i].code>0 && data[i].main && data[i].main.trim().length>3){
 			j++;
