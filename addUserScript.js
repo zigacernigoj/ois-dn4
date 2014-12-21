@@ -59,7 +59,7 @@ function addNewUserEHR() {
 		                    $("#addUserMessage").html("<span class='obvestilo label label-success fade-in'>Uspešno ustvarjen EHR račun '" + ehrId + "'.</span>");
 		                    console.log("Uspešno ustvarjen EHR račun'" + ehrId + "'.");
 		                    $("#preberiEHRid").val(ehrId);
-							$("#ehrIds").append(formName +" "+ formSurname +":</br>"+ ehrId+"</br>");
+							$("#ehrIds").append("<h4>"+formName +" "+ formSurname +":</h4>"+ ehrId+"</br>");
 		                }
 		            },
 		            error: function(err) {
@@ -356,9 +356,9 @@ function generateDiagnosis() {
 
 function loadAdd(){
 	
-	$("#ehrIds").append("Ana Ambrozic:</br>e1b61c7e-30ee-4da9-9bbf-2ee869cfa731</br>");
-$("#ehrIds").append("Borut Bajc:</br>3650b121-4465-4f19-bdf0-1da056bdf401</br>");
-$("#ehrIds").append("Ciril Cankar:</br>e50e6880-2c78-4384-943c-efb9231e1379</br>");
+	$("#ehrIds").append("<h4>Ana Ambrozic:<h4>e1b61c7e-30ee-4da9-9bbf-2ee869cfa731</br>");
+$("#ehrIds").append("<h4>Borut Bajc:<h4>3650b121-4465-4f19-bdf0-1da056bdf401</br>");
+$("#ehrIds").append("<h4>Ciril Cankar:<h4>e50e6880-2c78-4384-943c-efb9231e1379</br>");
 	
 	
 	var addU="<option value='Ana,Ambrozic,1992-01-01'>Ana Ambrozic</option>";
