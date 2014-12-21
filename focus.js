@@ -1,3 +1,12 @@
+function focusGuide() {
+	if(document.getElementById("guideShow").style.display == 'none'){
+		document.getElementById("guideShow").style.display = 'block';
+	}
+	else if(document.getElementById("guideShow").style.display == 'block'){
+		document.getElementById("guideShow").style.display = 'none';		
+	}
+}
+
 function focusUser() {
 	if(document.getElementById("userShow").style.display == 'none'){
 		document.getElementById("userShow").style.display = 'block';
@@ -28,7 +37,8 @@ function focusShowDiag() {
 function focusVisu() {
 	if(document.getElementById("visuShow").style.display == 'none'){
 		document.getElementById("visuShow").style.display = 'block';
-		$("#hint2").html("<span class='label label-default fade-in'>scroll down</span>");
+		$("#hint2").append("<span class='label label-default fade-in'>scroll down</span>");
+		$("#hint2").append("<a href='testd3a.html'>Open in new window, if you want.</a>");
 	}
 	else if(document.getElementById("visuShow").style.display == 'block'){
 		document.getElementById("visuShow").style.display = 'none';	
@@ -40,7 +50,7 @@ function focusVisu() {
 function focusTable() {
 	if(document.getElementById("tableShow").style.display == 'none'){
 		document.getElementById("tableShow").style.display = 'block';
-		$("#hint1").html("<span class='label label-default fade-in'>scroll down</span>");
+		$("#hint1").append("<span class='label label-default fade-in'>scroll down</span>");
 	}
 	else if(document.getElementById("tableShow").style.display == 'block'){
 		document.getElementById("tableShow").style.display = 'none';	
