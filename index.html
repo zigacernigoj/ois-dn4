@@ -36,8 +36,8 @@
 			  stroke-width: 2.5px;
 			}
 
-    </style>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    </style>
 	</head>
 	<body>
 		<div class="page-header">
@@ -85,6 +85,41 @@
 						<a href='testd3a.html'>Open in window, if you want.</a>
 						</br>
 						PS: klikni na katerikoli oranžni "node" - se odpre poddrevo. ;)
+						
+						
+						<h4>Opis rešitve: - oddan na učilnici</h4>
+						<p>
+						
+							* Na hitro: Pregled pacientovih diagnoz ter vizualizacija "deaths by causes" oziroma smrti glede na vzrok /tudi "vzroki smrti", kasneje samo "vzroki", zaradi preglednejšega zapisa/.
+							* Ideja (ki ni bila 100% realizirana):
+							- Pacient lahko pogleda svoje diagnoze in lahko vidi koliko možnosti ima, da preživi. Odstotek možnosti se poišče in izračuna (ni realizirano) v tabeli vzrokov smrti (je realizirano) - (če se pacientova diagnoza in katerikoli vzrok ujemata, seveda; če se nobena diagnoza ne ujema z nobenim vzrokom, odstotka ni mogoče izračunat/najt)
+							- Vizualizacija vseh vzrokov (realizirano) in označitev pacientovih diagnoz (če se ujemajo z vzroki) (označitev nerealizirana)
+							*Za vizualizacijo sem uporabil podatke iz zunanjega vira (glej točko "zunanji vir"). 
+							 
+
+							* Zunanji vir:
+							- Zadnja povezava v razdelku "By region" na <a href="http://www.who.int/healthinfo/global_burden_disease/estimates/en/index1.html">tej spletni strani WHO</a> je XLS dokument, ki sem ga z javascriptom potegnil dol in sparsal. (Nisem ga na roke dol potegnil.)
+
+							- XLS je sparsan z xls-to-json (<a href="https://www.npmjs.com/package/xls-to-json">povezava</a>)
+
+							- Download s spletne strani: <a href="https://github.com/zigacernigoj/ois-dn4/blob/gh-pages/sDprep1.js">sDprep1.js</a>
+
+							- Parsanje xls dokumenta: </a href="https://github.com/zigacernigoj/ois-dn4/blob/gh-pages/sDprep2.js">sDprep2.js</a>
+
+							* Izvorna koda:
+							<a href="https://github.com/zigacernigoj/ois-dn4">https://github.com/zigacernigoj/ois-dn4</a>
+
+							* Spletna stran:
+							<a href="http://zigacernigoj.github.io/ois-dn4/">http://zigacernigoj.github.io/ois-dn4/</a>
+
+ 
+
+ 
+						
+						
+						</p>
+						
+						
 					</div>
 					</div>
 					</div>
