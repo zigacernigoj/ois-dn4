@@ -36,12 +36,12 @@ function addDiagnosis() {
 		formStat="at0028";
 	}
 	else {
-		$("#addFormMessage").html("<span class='obvestilo label label-warning fade-in'>Status je lahko samo Active, Inactive, Resolved</span>");
+		$("#addDiagnosisMessage").html("<span class='obvestilo label label-warning fade-in'>Status je lahko samo Active, Inactive, Resolved</span>");
 		formStat="";
 	}
 	
 	if ( !formEhrId || !formDiag || !formDesc || !formDate || !formStat || formEhrId.trim().length == 0 || formDiag.trim().length == 0 || formDesc.trim().length == 0 || formDate.trim().length == 0 || formStat.trim().length == 0) {
-		$("#addFormMessage").append("<span class='obvestilo label label-warning fade-in'>Prosim vnesite podatke.</span>");
+		$("#addDiagnosisMessage").append("<span class='obvestilo label label-warning fade-in'>Prosim vnesite podatke.</span>");
 		$("#header").html("<div></div>");
 	} else {
 		$.ajaxSetup({
@@ -113,7 +113,7 @@ function addDiagnosis() {
 
 $(document).ready(function() {
 	$('#readReady').change(function() {
-		$("#addFormMessage").html("");
+		$("#addDiagnosisMessage").html("");
 		var podatki = $(this).val().split(",");
 		$("#addEhrId").val(podatki[0]);
 		$("#addDiag").val(podatki[1]);
