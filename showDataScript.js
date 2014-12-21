@@ -121,13 +121,15 @@ function selectData(){
 		
 		for (var j in sub1Cat){
 			//$("#krneki").append(mainCat[i]+" "+sub1Cat[j]+"</br>");
-			if(mainCat[i].substring(0,1)==sub1Cat[j].substring(0,1)){
+			if(mainCat[i].substring(0,2)==sub1Cat[j].substring(0,2)){
 				jsonString+='{"name":"'+sub1Cat[j]+'",';
 				jsonString+='"children":[';
 				//jsonString+='"size":1},';
+				var childs1=false;
 				for (var k in sub2Cat){
 					//$("#krneki").append(mainCat[i]+" "+sub1Cat[j]+"</br>");
-					if(sub1Cat[j].substring(0,3)==sub2Cat[k].substring(0,3)){
+					if(sub1Cat[j].substring(0,4)==sub2Cat[k].substring(0,4)){
+						childs1=true;
 						jsonString+='{"name":"'+sub2Cat[k]+'",';
 						jsonString+='"children":[';
 						var childs=false;
@@ -158,6 +160,11 @@ function selectData(){
 					jsonString= jsonString.substring(0, jsonString.length-1);
 				}
 				jsonString+=']},';
+				/////////////////
+				if(!childs1){
+					jsonString=jsonString.substring(0,jsonString.length-15);
+					jsonString+='"size":1},';
+				}
 			}
 		}
 		if(jsonString.charAt(jsonString.length-1)==','){

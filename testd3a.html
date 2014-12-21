@@ -33,7 +33,6 @@ path.link {
     <div id="body">
     </div>
     <script type="text/javascript">
-
 var m = [0, 0, 0, 300],
     w = 1920 - m[1] - m[3],
     h = 2000 - m[0] - m[2],
@@ -55,8 +54,10 @@ var vis = d3.select("#body").append("svg:svg")
 d3.json("diseases.json", function(json) {
   root = json;
   root.x0 = h / 2;
+  //root.x0 = 0;
   root.y0 = 0;
-
+  //root.y0 = w / 2;
+  
   function toggleAll(d) {
     if (d.children) {
       d.children.forEach(toggleAll);
