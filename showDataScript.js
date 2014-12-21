@@ -95,7 +95,7 @@ function getData(){
 }
 
 
-function toggle(){
+function toggleData(){
 	if(document.getElementById("data1").style.display == 'none'){
 		document.getElementById("data1").style.display = 'block';
 		document.getElementById("data2").style.display = 'block';

@@ -8,12 +8,12 @@
 	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	    <script src="addUserScript.js"></script>
-		<script src="addDiagnosisScript.js"></script>
+		<!--<script src="addDiagnosisScript.js"></script>-->
 		<script src="testScript.js"></script>
 		<script src="showDataScript.js"></script>
+		<script src="focus.js"></script>
 	    <style>
 	  		body {padding: 10px;}
-	  		.obvestilo {margin-left:10px;}
 	  	</style>
 		    <style type="text/css">
 
@@ -42,347 +42,357 @@
 		<div class="page-header">
 			<h2>
 				Infos about your diagnosis 
-				<small>USTVARI NOV EHR RAČUN</small>
+				<small id="subtitle"></small>
 			</h2>  	
 			
 		</div> 
 		
 		<div class="row">
-		<div class="col-lg-2 col-md-2 col-sm-2" id="meni">
-			<button type="button" class="btn btn-primary btn-md" onclick="toggle()">Add User</button><hr>
-			<button type="button" class="btn btn-primary btn-md" onclick="toggle()">Add Diagnosis</button><hr>
-			<button type="button" class="btn btn-primary btn-md" onclick="toggle()">Show Data</button><hr>
-			<button type="button" class="btn btn-primary btn-md" onclick="toggle()">Visualize Data</button><hr>
-		
-		</div>
-		
-		
-		<div class="col-lg-10 col-md-10 col-sm-10" id="content">
-		<div class="row">
-			
-			<!--uporabnik-->
-			
-			<div class="col-lg-4 col-md-4 col-sm-4" id="user">
-				<h4>Izberi nov hiter vnos:</h4>
-				<div class="input-group">
-					<span class="input-group-addon">Prednastavljeno:</span>
-					<select class="form-control" id="UserReady"> <!--ENAKA KOT PRI Diagnoza-->
-						<option value=""></option>
-						<option value="janez,novak,1999-11-22T11:55">janez novak</option>
-					</select>
-				</div>
-					<hr>
-				<h4>Ali pa ročno vpisuj podatke:</h4> 
-				<div class="input-group">
-					<span class="input-group-addon">Ime:</span>
-					<input id="addName" type="text" class="form-control" placeholder="Ime">
-				</div>	
-					</br>
-				<div class="input-group">
-					<span class="input-group-addon">Priimek:</span>
-					<input id="addSurname" type="text" class="form-control" placeholder="Priimek">
-				</div>	
-					</br>
-				<div class="input-group">	
-					<span class="input-group-addon">Datum rojstva (yyyy-mm-ddThh:mm):</span>
-					<input id="addBirthDate" type="text" class="form-control" placeholder="yyyy-mm-ddThh:mm">
-				</div>
-					<hr>
-				<button type="button" class="btn btn-primary btn-md" onclick="addNewUserEHR()"> Ustvarjanje novega EHR računa</button>
-				<span id="addFormMessage"></span> <!--tu notr funkcija poslje sporocilo-->
-			</div>
-			 
-			
-			<!--diagnoza-->
-			
-			<div class="col-xs-12 col-lg-4" id="diagnosis">
-				<h4>Izberi nov hiter vnos:</h4>
-				<div class="input-group">
-					<span class="input-group-addon">Prednastavljeno:</span>
-					<select class="form-control" id="readReady"><!--ENAKA KOT PRI UPORABNIK-->
-						<option value=""></option>
-						<option value="e666edc4-512e-4201-bd9a-1006e8fef996,diagnoza,opis,2014-12-12T01:01,active">janez novak</option>
-					</select>
-				</div>
-					<hr>
-				<h4>Ali pa ročno vpisuj podatke:</h4> 
-				
-				<div class="input-group">
-					<span class="input-group-addon">EHR ID:</span>
-					<input id="addEhrId" type="text" class="form-control" placeholder="e666edc4-512e-4201-bd9a-1006e8fef996">
-				</div>	
-					</br>
-				<div class="input-group">
-					<span class="input-group-addon">Diagnoza:</span>
-					<input id="addDiag" type="text" class="form-control" placeholder="Diagnoza">
-				</div>	
-					</br>
-				<div class="input-group">	
-					<span class="input-group-addon">Opis:</span>
-					<input id="addDesc" type="text" class="form-control" placeholder="Opis">
-				</div>
-					</br>
-				<div class="input-group">	
-					<span class="input-group-addon">Datum (yyyy-mm-ddThh:mm):</span>
-					<input id="addDate" type="text" class="form-control" placeholder="yyyy-mm-ddThh:mm">
-				</div>
-					</br>
-				<div class="input-group">	
-					<span class="input-group-addon">Status (active|inactive|...):</span>
-					<input id="addStat" type="text" class="form-control" placeholder="Status">
-				</div>
-					<hr>
-				<button type="button" class="btn btn-primary btn-md" onclick="addDiagnosis()">Dodaj diagnozo</button>
-				<span id="addDiagnosisMessage"></span>
-				<div id="header"></div>
-				<div id="result"></div>
-			
+			<h4>MENI:</h4>
+			<div class="col-lg-2 col-md-2 col-sm-2" id="meni">
+				<button type="button" class="btn btn-primary btn-md" onclick="focusUser()">Add User</button><hr>
+				<button type="button" class="btn btn-primary btn-md" onclick="focusDiagnosis()">Add Diagnosis</button><hr>
+				<button type="button" class="btn btn-primary btn-md" onclick="focusShowDiag()">See Diagnosis</button><hr>
+				<button type="button" class="btn btn-primary btn-md" onclick="focusTable()">Show Data</button><div id="hint1"></div><hr>
+				<button type="button" class="btn btn-primary btn-md" onclick="focusVisu()">Visualize Data</button><div id="hint2"></div><hr>
+				<div id="ehrIds">Generirane osebe:</br></div>
+				<div id="generate">generator's log:</br></div>
 			</div>
 			
-			<!--test-->
-			<div class="col-lg-4 col-md-4 col-sm-4">
-				<h4>Izberi nov hiter vnos:</h4>
-				<div class="input-group">
-						<span class="input-group-addon">Prednastavljeno:</span>
-						<select class="form-control" id="preberiEhrIdZaVitalneZnake">
-							<option value=""></option>
-							<option value="b931580f-2b05-488b-985b-8d9ffb08ad02">Ata Smrk</option>
-							<option value="d564c6a3-5a43-4fcc-bfa7-9ac76e9673bd">Pujsa Pepa</option>
-							<option value="972406a9-2c17-4318-9c8c-b1a0aedbf613">Mary Wilkinson [EhrScape demos generated person]</option>
-						</select>
-				</div>		
-				<hr>
-				
-				<h4>Ali pa ročno vpisuj podatke:</h4>
-				<div class="input-group">
-					<span class="input-group-addon">EHR ID:</span>
-					<input id="meritveVitalnihZnakovEHRid" type="text" class="form-control" placeholder="7b661e12-3a98-21ad-c29e-2dc9f5a3d885">
-				</div>
-					<hr>
-				<button type="button" class="btn btn-primary" onclick="preberiMeritveVitalnihZnakov('telesna temperatura')">Prijavi se</button>
-				<hr>
-				
-				<span id="preberiMeritveVitalnihZnakovSporocilo"></span>
-				<span id="preberiSporocilo"></span>
-				<div id="krneki"></div>
-				<div id="rezultatMeritveVitalnihZnakov"></div>
-			</div>
-		</div>	
-		
-		<!--show data-->
-		<div class="row">
-			<div class="col-lg-3 col-md-3 col-sm-3">
-		
-				<div class="input-group">
-					<span class="input-group-addon">Izberi:</span>
-					<select class="form-control" id="chooseMain">
-					</select>
-				</div>
-			</div>
 			
-			<div class="col-lg-3 col-md-3 col-sm-3">
-		
-				<div class="input-group">
-					<span class="input-group-addon">Izberi:</span>
-					<select class="form-control" id="chooseS1">
-					</select>
-				</div>
-			</div>
-			
-			<div class="col-lg-3 col-md-3 col-sm-3">
-		
-				<div class="input-group">
-					<span class="input-group-addon">Izberi:</span>
-					<select class="form-control" id="chooseS2">
-					</select>
-				</div>
-			</div>
+			<div class="col-lg-10 col-md-10 col-sm-10" id="content">
+				<div class="row">
 					
-			<div class="col-lg-3 col-md-3 col-sm-3">
-		
-				<div class="input-group">
-					<span class="input-group-addon">Izberi:</span>
-					<select class="form-control" id="chooseS3">
-						<option value=""></option>
+					<!--uporabnik-->
+					
+					<div class="col-lg-4 col-md-4 col-sm-4" id="userShow" style="display:none;">
+						<h1>Vnesi Nov Zapis:</h1>
+						<h4>Izberi nov hiter vnos:</h4>
+						<div class="input-group">
+							<span class="input-group-addon">Prednastavljeno:</span>
+							<select class="form-control" id="UserReady"> 
+								<option value=""></option>
+								<option value="janez,novak,1999-11-22T11:55">janez novak</option>
+							</select>
+						</div>
+							<hr>
+						<h4>Ali pa ročno vpisuj podatke:</h4> 
+						<div class="input-group">
+							<span class="input-group-addon">Ime:</span>
+							<input id="addName" type="text" class="form-control" placeholder="Ime">
+						</div>	
+							</br>
+						<div class="input-group">
+							<span class="input-group-addon">Priimek:</span>
+							<input id="addSurname" type="text" class="form-control" placeholder="Priimek">
+						</div>	
+							</br>
+						<div class="input-group">	
+							<span class="input-group-addon">Datum rojstva (yyyy-mm-ddThh:mm):</span>
+							<input id="addBirthDate" type="text" class="form-control" placeholder="yyyy-mm-ddThh:mm">
+						</div>
+							<hr>
+						<button type="button" class="btn btn-primary btn-md" onclick="addNewUserEHR()"> Ustvarjanje novega EHR računa</button>
+						<span id="addUserMessage"></span> <!--tu notr funkcija poslje sporocilo-->
+					</div>
+					 
+					
+					<!--diagnoza-->
+					
+					<div class="col-xs-12 col-lg-4" id="diagnosisShow" style="display:none;">
+						<h1>Vnesi Diagnozo:</h1>
+						<h4>Izberi nov hiter vnos:</h4>
+						<div class="input-group">
+							<span class="input-group-addon">Prednastavljeno:</span>
+							<select class="form-control" id="DiagReady">
+								<option value=""></option>
+								<option value="e666edc4-512e-4201-bd9a-1006e8fef996,diagnoza,opis,2014-12-12T01:01,active">janez novak</option>
+							</select>
+						</div>
+							<hr>
+						<h4>Ali pa ročno vpisuj podatke:</h4> 
 						
-					</select>
+						<div class="input-group">
+							<span class="input-group-addon">EHR ID:</span>
+							<input id="addDEhrId" type="text" class="form-control" placeholder="e666edc4-512e-4201-bd9a-1006e8fef996">
+						</div>	
+							</br>
+						<div class="input-group">
+							<span class="input-group-addon">Diagnoza:</span>
+							<input id="addDiag" type="text" class="form-control" placeholder="Diagnoza">
+						</div>	
+							</br>
+						<div class="input-group">	
+							<span class="input-group-addon">Opis:</span>
+							<input id="addDesc" type="text" class="form-control" placeholder="Opis">
+						</div>
+							</br>
+						<div class="input-group">	
+							<span class="input-group-addon">Datum (yyyy-mm-ddThh:mm):</span>
+							<input id="addDDate" type="text" class="form-control" placeholder="yyyy-mm-ddThh:mm">
+						</div>
+							</br>
+						<div class="input-group">	
+							<span class="input-group-addon">Status (active|inactive|resolved):</span>
+							<input id="addStat" type="text" class="form-control" placeholder="Status">
+						</div>
+							<hr>
+						<button type="button" class="btn btn-primary btn-md" onclick="addDiagnosis()">Dodaj diagnozo</button>
+						<span id="addDiagnosisMessage"></span>
+						<div id="header"></div>
+						<div id="result"></div>
+					
+					</div>
+					
+					<!--test-->
+					<div class="col-lg-4 col-md-4 col-sm-4" id="dataShow" style="display:none;">
+					<h1>Pokaži Podatke:</h1>	
+						<h4>Izberi nov hiter vnos:</h4>
+						<div class="input-group">
+								<span class="input-group-addon">Prednastavljeno:</span>
+								<select class="form-control" id="preberiEhrIdZaVitalneZnake">
+									<option value=""></option>
+									<option value="b931580f-2b05-488b-985b-8d9ffb08ad02">Ata Smrk</option>
+									<option value="d564c6a3-5a43-4fcc-bfa7-9ac76e9673bd">Pujsa Pepa</option>
+									<option value="972406a9-2c17-4318-9c8c-b1a0aedbf613">Mary Wilkinson [EhrScape demos generated person]</option>
+								</select>
+						</div>		
+						<hr>
+						
+						<h4>Ali pa ročno vpisuj podatke:</h4>
+						<div class="input-group">
+							<span class="input-group-addon">EHR ID:</span>
+							<input id="meritveVitalnihZnakovEHRid" type="text" class="form-control" placeholder="7b661e12-3a98-21ad-c29e-2dc9f5a3d885">
+						</div>
+							<hr>
+						<button type="button" class="btn btn-primary" onclick="preberiMeritveVitalnihZnakov('telesna temperatura')">Poglej diagnoze:</button>
+						<hr>
+						
+						<span id="preberiMeritveVitalnihZnakovSporocilo"></span>
+						<span id="preberiSporocilo"></span>
+						<div id="krneki"></div>
+						<div id="rezultatMeritveVitalnihZnakov"></div>
+					</div>
+				</div>	
+				<script>loadAdd();</script>
+			
+				<!--show data-->
+				<div class="row" id="restOfShow" style="display:none;">
+					
+					<div class="col-lg-3 col-md-3 col-sm-3">
+				
+						<div class="input-group">
+							<span class="input-group-addon">Izberi:</span>
+							<select class="form-control" id="chooseMain">
+							</select>
+						</div>
+					</div>
+					
+					<div class="col-lg-3 col-md-3 col-sm-3">
+				
+						<div class="input-group">
+							<span class="input-group-addon">Izberi:</span>
+							<select class="form-control" id="chooseS1">
+							</select>
+						</div>
+					</div>
+					
+					<div class="col-lg-3 col-md-3 col-sm-3">
+				
+						<div class="input-group">
+							<span class="input-group-addon">Izberi:</span>
+							<select class="form-control" id="chooseS2">
+							</select>
+						</div>
+					</div>
+							
+					<div class="col-lg-3 col-md-3 col-sm-3">
+				
+						<div class="input-group">
+							<span class="input-group-addon">Izberi:</span>
+							<select class="form-control" id="chooseS3">
+								<option value=""></option>
+								
+							</select>
+						</div>
+					</div>
+
+				</div>	
+			</div>
+		</div>
+			<hr>
+			
+			<!-- DATA SHOW-->
+			<div class="row" id="tableShow" style="display:none;">
+				<div class="col-lg-12 col-md-12 col-sm-12" id="button">
+					<h1>BOLEZNI PO SMRTNOSTI / SMRTI GLEDE NA VZROK (bolj so pogostejši, manjšo številko imajo) -> TABELA:</h1>
+					<button type="button" class="btn btn-primary btn-md" onclick="toggleData()">button</button>
+					</br>
+					<div class="col-lg-6 col-md-6 col-sm-6" id="data1" style="display:none;">
+						
+						
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6" id="data2" style="display:none;">
+						
+						
+					</div>
 				</div>
-			</div>
-
-		</div>	
-		
-		<div class="row">
-			<button type="button" class="btn btn-primary btn-md" onclick="toggle()">button</button>
-			</br>
-			<div class="col-lg-6 col-md-6 col-sm-6" id="data1" style="display:none;">
-				DATA1</br>
+				<script>getData();</script>
+			</div>	
+				<hr>
+			<!--visualize-->
 				
+			<div class="row" id="visuShow" style="display:none;">
+				<h1>VIZUALIZACIJA BOLEZNI PO SMRTNOSTI / SMRTI GLEDE NA VZROK (bolj so pogostejši, manjšo številko imajo):</h1>			
+				<div id="body" >
+				</div>
+				<script type="text/javascript">
+					var m = [0, 0, 0, 250],
+						w = 1920 - m[1] - m[3],
+						h = 2000 - m[0] - m[2],
+						i = 0,
+						root;
+
+					var tree = d3.layout.tree()
+						.size([h, w]);
+
+					var diagonal = d3.svg.diagonal()
+						.projection(function(d) { return [d.y, d.x]; });
+
+					var vis = d3.select("#body").append("svg:svg")
+						.attr("width", w + m[1] + m[3])
+						.attr("height", h + m[0] + m[2])
+					  .append("svg:g")
+						.attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+						
+					d3.json('diseases.json', function(json) {
+					  root = json;
+					  root.x0 = h / 2;
+					  //root.x0 = 0;
+					  root.y0 = 0;
+					  //root.y0 = w / 2;
+					  
+					  function toggleAll(d) {
+						if (d.children) {
+						  d.children.forEach(toggleAll);
+						  toggle(d);
+						}
+					  }
+
+					  // Initialize the display to show a few nodes.
+					  root.children.forEach(toggleAll);
+					  //toggle(root.children[1]);
+					  //toggle(root.children[1].children[2]);
+					  //toggle(root.children[9]);
+					  //toggle(root.children[9].children[0]);
+
+					  update(root);
+					});
+
+					function update(source) {
+					  var duration = d3.event && d3.event.altKey ? 5000 : 500;
+
+					  // Compute the new tree layout.
+					  var nodes = tree.nodes(root).reverse();
+
+					  // Normalize for fixed-depth.
+					  nodes.forEach(function(d) { d.y = d.depth * 300; });
+
+					  // Update the nodes…
+					  var node = vis.selectAll("g.node")
+						  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+					  // Enter any new nodes at the parent's previous position.
+					  var nodeEnter = node.enter().append("svg:g")
+						  .attr("class", "node")
+						  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+						  .on("click", function(d) { toggle(d); update(d); });
+
+					  nodeEnter.append("svg:circle")
+						  .attr("r", 7)
+						  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+					  nodeEnter.append("svg:text")
+						  .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
+						  .attr("dy", ".35em")
+						  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+						  .text(function(d) { return d.name; })
+						  .style("fill-opacity", 1e-6);
+
+					  // Transition nodes to their new position.
+					  var nodeUpdate = node.transition()
+						  .duration(duration)
+						  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+					  nodeUpdate.select("circle")
+						  .attr("r", 6)
+						  .style("fill", function(d) { return d._children ? "orange" : "lightgreen"; });
+
+					  nodeUpdate.select("text")
+						  .style("fill-opacity", 1);
+
+					  // Transition exiting nodes to the parent's new position.
+					  var nodeExit = node.exit().transition()
+						  .duration(duration)
+						  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+						  .remove();
+
+					  nodeExit.select("circle")
+						  .attr("r", 6);
+
+					  nodeExit.select("text")
+						  .style("fill-opacity", 1e-6);
+
+					  // Update the links…
+					  var link = vis.selectAll("path.link")
+						  .data(tree.links(nodes), function(d) { return d.target.id; });
+
+					  // Enter any new links at the parent's previous position.
+					  link.enter().insert("svg:path", "g")
+						  .attr("class", "link")
+						  .attr("d", function(d) {
+							var o = {x: source.x0, y: source.y0};
+							return diagonal({source: o, target: o});
+						  })
+						.transition()
+						  .duration(duration)
+						  .attr("d", diagonal);
+
+					  // Transition links to their new position.
+					  link.transition()
+						  .duration(duration)
+						  .attr("d", diagonal);
+
+					  // Transition exiting nodes to the parent's new position.
+					  link.exit().transition()
+						  .duration(duration)
+						  .attr("d", function(d) {
+							var o = {x: source.x, y: source.y};
+							return diagonal({source: o, target: o});
+						  })
+						  .remove();
+
+					  // Stash the old positions for transition.
+					  nodes.forEach(function(d) {
+						d.x0 = d.x;
+						d.y0 = d.y;
+					  });
+					}
+
+					// Toggle children.
+					function toggle(d) {
+					  if (d.children) {
+						d._children = d.children;
+						d.children = null;
+					  } else {
+						d.children = d._children;
+						d._children = null;
+					  }
+					}
+
+				</script>	
 			</div>
-			<div class="col-lg-6 col-md-6 col-sm-6" id="data2" style="display:none;">
-				DATA2</br>
-				
-			</div>
-		</div>
-			<script>getData();</script>
-		</div>	
-			
-			
-		<div class="row">	
-		<div id="body">
-		</div>
-    <script type="text/javascript">
-var m = [0, 0, 0, 250],
-    w = 1920 - m[1] - m[3],
-    h = 2000 - m[0] - m[2],
-    i = 0,
-    root;
-
-var tree = d3.layout.tree()
-    .size([h, w]);
-
-var diagonal = d3.svg.diagonal()
-    .projection(function(d) { return [d.y, d.x]; });
-
-var vis = d3.select("#body").append("svg:svg")
-    .attr("width", w + m[1] + m[3])
-    .attr("height", h + m[0] + m[2])
-  .append("svg:g")
-    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
-	
-d3.json('diseases.json', function(json) {
-  root = json;
-  root.x0 = h / 2;
-  //root.x0 = 0;
-  root.y0 = 0;
-  //root.y0 = w / 2;
-  
-  function toggleAll(d) {
-    if (d.children) {
-      d.children.forEach(toggleAll);
-      toggle(d);
-    }
-  }
-
-  // Initialize the display to show a few nodes.
-  root.children.forEach(toggleAll);
-  //toggle(root.children[1]);
-  //toggle(root.children[1].children[2]);
-  //toggle(root.children[9]);
-  //toggle(root.children[9].children[0]);
-
-  update(root);
-});
-
-function update(source) {
-  var duration = d3.event && d3.event.altKey ? 5000 : 500;
-
-  // Compute the new tree layout.
-  var nodes = tree.nodes(root).reverse();
-
-  // Normalize for fixed-depth.
-  nodes.forEach(function(d) { d.y = d.depth * 300; });
-
-  // Update the nodes…
-  var node = vis.selectAll("g.node")
-      .data(nodes, function(d) { return d.id || (d.id = ++i); });
-
-  // Enter any new nodes at the parent's previous position.
-  var nodeEnter = node.enter().append("svg:g")
-      .attr("class", "node")
-      .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-      .on("click", function(d) { toggle(d); update(d); });
-
-  nodeEnter.append("svg:circle")
-      .attr("r", 7)
-      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
-
-  nodeEnter.append("svg:text")
-      .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
-      .attr("dy", ".35em")
-      .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-      .text(function(d) { return d.name; })
-      .style("fill-opacity", 1e-6);
-
-  // Transition nodes to their new position.
-  var nodeUpdate = node.transition()
-      .duration(duration)
-      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
-
-  nodeUpdate.select("circle")
-      .attr("r", 6)
-      .style("fill", function(d) { return d._children ? "orange" : "lightgreen"; });
-
-  nodeUpdate.select("text")
-      .style("fill-opacity", 1);
-
-  // Transition exiting nodes to the parent's new position.
-  var nodeExit = node.exit().transition()
-      .duration(duration)
-      .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
-      .remove();
-
-  nodeExit.select("circle")
-      .attr("r", 6);
-
-  nodeExit.select("text")
-      .style("fill-opacity", 1e-6);
-
-  // Update the links…
-  var link = vis.selectAll("path.link")
-      .data(tree.links(nodes), function(d) { return d.target.id; });
-
-  // Enter any new links at the parent's previous position.
-  link.enter().insert("svg:path", "g")
-      .attr("class", "link")
-      .attr("d", function(d) {
-        var o = {x: source.x0, y: source.y0};
-        return diagonal({source: o, target: o});
-      })
-    .transition()
-      .duration(duration)
-      .attr("d", diagonal);
-
-  // Transition links to their new position.
-  link.transition()
-      .duration(duration)
-      .attr("d", diagonal);
-
-  // Transition exiting nodes to the parent's new position.
-  link.exit().transition()
-      .duration(duration)
-      .attr("d", function(d) {
-        var o = {x: source.x, y: source.y};
-        return diagonal({source: o, target: o});
-      })
-      .remove();
-
-  // Stash the old positions for transition.
-  nodes.forEach(function(d) {
-    d.x0 = d.x;
-    d.y0 = d.y;
-  });
-}
-
-// Toggle children.
-function toggle(d) {
-  if (d.children) {
-    d._children = d.children;
-    d.children = null;
-  } else {
-    d.children = d._children;
-    d._children = null;
-  }
-}
-
-    </script>	
-			
-			
-			
-			
-			
-			
-		
-		</div>
+			<!--<script>generateDiagnosis();</script>-->
 		</div>
 	</body>
 </html>
