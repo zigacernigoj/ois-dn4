@@ -2,18 +2,19 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <link type="text/css" rel="stylesheet" href="style.css"/>
-    <script type="text/javascript" src="d3/d3.js"></script>
-    <script type="text/javascript" src="d3/d3.layout.js"></script>
+    <!--<link type="text/css" rel="stylesheet" href="style.css"/>-->
+    <!--<script type="text/javascript" src="d3/d3.js"></script>-->
+    <!--<script type="text/javascript" src="d3/d3.layout.js"></script>-->
 	<script src="http://d3js.org/d3.v3.min.js"></script>
     <style type="text/css">
 
 
 .node circle {
   cursor: pointer;
-  fill: #fff;
+  fill: lightgreen;
   stroke: steelblue;
-  stroke-width: 2px;
+  stroke-width: 5px;
+  
 }
 
 .node text {
@@ -22,7 +23,7 @@
 
 path.link {
   fill: none;
-  stroke: #ccc;
+  stroke: grey;
   stroke-width: 2px;
 }
 
@@ -33,9 +34,9 @@ path.link {
     </div>
     <script type="text/javascript">
 
-var m = [20, 120, 20, 120],
-    w = 1280 - m[1] - m[3],
-    h = 800 - m[0] - m[2],
+var m = [0, 0, 0, 300],
+    w = 1920 - m[1] - m[3],
+    h = 2000 - m[0] - m[2],
     i = 0,
     root;
 
@@ -65,8 +66,8 @@ d3.json("diseases.json", function(json) {
 
   // Initialize the display to show a few nodes.
   root.children.forEach(toggleAll);
-  toggle(root.children[1]);
-  toggle(root.children[1].children[2]);
+  //toggle(root.children[1]);
+  //toggle(root.children[1].children[2]);
   //toggle(root.children[9]);
   //toggle(root.children[9].children[0]);
 
@@ -80,7 +81,7 @@ function update(source) {
   var nodes = tree.nodes(root).reverse();
 
   // Normalize for fixed-depth.
-  nodes.forEach(function(d) { d.y = d.depth * 180; });
+  nodes.forEach(function(d) { d.y = d.depth * 300; });
 
   // Update the nodes…
   var node = vis.selectAll("g.node")
@@ -93,7 +94,7 @@ function update(source) {
       .on("click", function(d) { toggle(d); update(d); });
 
   nodeEnter.append("svg:circle")
-      .attr("r", 1e-6)
+      .attr("r", 6)
       .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
 
   nodeEnter.append("svg:text")
@@ -109,8 +110,8 @@ function update(source) {
       .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeUpdate.select("circle")
-      .attr("r", 4.5)
-      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+      .attr("r", 6)
+      .style("fill", function(d) { return d._children ? "orange" : "lightgreen"; });
 
   nodeUpdate.select("text")
       .style("fill-opacity", 1);
@@ -122,7 +123,7 @@ function update(source) {
       .remove();
 
   nodeExit.select("circle")
-      .attr("r", 1e-6);
+      .attr("r", 6);
 
   nodeExit.select("text")
       .style("fill-opacity", 1e-6);
