@@ -38,7 +38,7 @@ function focusVisu() {
 	if(document.getElementById("visuShow").style.display == 'none'){
 		document.getElementById("visuShow").style.display = 'block';
 		$("#hint2").append("<span class='label label-default fade-in'>scroll down</span>");
-		$("#hint2").append("<a href='testd3a.html'>Open in new window, if you want.</a>");
+		$("#hint2").append("</br><a href='testd3a.html'>Open in new window, if you want.</a>");
 	}
 	else if(document.getElementById("visuShow").style.display == 'block'){
 		document.getElementById("visuShow").style.display = 'none';	
