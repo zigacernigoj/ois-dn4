@@ -1,44 +1,44 @@
 function focusGuide() {
 	if(document.getElementById("guideShow").style.display == 'none'){
 		document.getElementById("guideShow").style.display = 'block';
-		$("#hg").append("<span class='label label-default fade-in'>opened</span>");
+		$("#hghint").html("<span class='label label-default fade-in'>opened</span>");
 	}
 	else if(document.getElementById("guideShow").style.display == 'block'){
 		document.getElementById("guideShow").style.display = 'none';
-		$("#hg").append("");
+		$("#hghint").html("");
 	}
 }
 
 function focusUser() {
 	if(document.getElementById("userShow").style.display == 'none'){
 		document.getElementById("userShow").style.display = 'block';
-		$("#hu").append("<span class='label label-default fade-in'>opened</span>");
+		$("#huhint").html("<span class='label label-default fade-in'>opened</span>");
 	}
 	else if(document.getElementById("userShow").style.display == 'block'){
 		document.getElementById("userShow").style.display = 'none';	
-		$("#hu").append("");
+		$("#huhint").html("");
 	}
 }
 
 function focusDiagnosis() {
 	if(document.getElementById("diagnosisShow").style.display == 'none'){
 		document.getElementById("diagnosisShow").style.display = 'block';
-			$("#hd").append("<span class='label label-default fade-in'>opened</span>");
+			$("#hdhint").html("<span class='label label-default fade-in'>opened</span>");
 	}
 	else if(document.getElementById("diagnosisShow").style.display == 'block'){
 		document.getElementById("diagnosisShow").style.display = 'none';
-		$("#hd").append("");		
+		$("#hdhint").html("");		
 	}
 }
 
 function focusShowDiag() {
 	if(document.getElementById("dataShow").style.display == 'none'){
 		document.getElementById("dataShow").style.display = 'block';
-			$("#hs").append("<span class='label label-default fade-in'>opened</span>");
+			$("#hshint").html("<span class='label label-default fade-in'>opened</span>");
 	}
 	else if(document.getElementById("dataShow").style.display == 'block'){
 		document.getElementById("dataShow").style.display = 'none';		
-		$("#hs").append("");
+		$("#hshint").html("");
 	}
 }
 
